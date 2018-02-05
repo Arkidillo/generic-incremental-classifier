@@ -5,6 +5,7 @@ public class GenericIncrementalClassifier {
         // Start window
         GUIHandler gui = new GUIHandler();
         gui.createWindow(new Dimension(1920, 1080));
+        gui.loadFirstImage();
 
         // Run user-input step
         // Loop:

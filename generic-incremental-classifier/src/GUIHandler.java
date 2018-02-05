@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 
 public class GUIHandler {
@@ -6,18 +5,20 @@ public class GUIHandler {
     private ImagePane imagePane;
 
     public void createWindow(Dimension dim) {
+        // create pane and frame
         imagePane   = new ImagePane(dim);
         frame       = new OurFrame(dim, imagePane);
+}
 
-        frame.add(imagePane);
-        frame.pack();
-
+    // add the first image in the folder to the screen (pane)
+    public void loadFirstImage() {
         OurImage image = ImageLoader.loadFirstImage();
-        imagePane.loadImage(image);
+        imagePane.addImage(image);
 
         image.setLocation(540, 960);
         image.repaint();
+        imagePane.repaint();
+        frame.repaint();
     }
-
 
 }
