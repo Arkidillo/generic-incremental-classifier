@@ -14,6 +14,9 @@ public class GUIHandler {
 
         OurImage image = ImageLoader.loadFirstImage();
         imagePane.loadImage(image);
+
+        image.setLocation(540, 960);
+        image.repaint();
     }
 
 

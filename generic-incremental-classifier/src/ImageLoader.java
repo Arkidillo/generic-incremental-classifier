@@ -15,6 +15,6 @@ public class ImageLoader {
 
     // return first image in the 'images' folder.
     public static OurImage loadFirstImage() {
-        return null;
+        return loadImage("me.jpg");
     }
 }
