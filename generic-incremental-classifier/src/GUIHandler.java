@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class GUIHandler {
     private OurFrame frame;
@@ -12,11 +13,9 @@ public class GUIHandler {
 
     // add the first image in the folder to the screen (pane)
     public void loadFirstImage() {
-        OurImage image = ImageLoader.loadFirstImage();
-        imagePane.addImage(image);
+        BufferedImage image = ImageLoader.loadFirstImage();
+        imagePane.setImage(image);
 
-        image.setLocation(540, 960);
-        image.repaint();
         imagePane.repaint();
         frame.repaint();
     }
