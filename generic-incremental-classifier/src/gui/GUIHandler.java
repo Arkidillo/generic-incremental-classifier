@@ -1,8 +1,6 @@
 package gui;
 
-import gui.buttons.BackButton;
-import gui.buttons.DeleteButton;
-import gui.buttons.NextButton;
+import gui.buttons.*;
 import util.ImageLoader;
 
 import java.awt.*;
@@ -14,9 +12,7 @@ public class GUIHandler implements ActionListener{
     private OurFrame frame;
     private ImagePane imagePane;
 
-    private boolean nextButtonPressed = false;
-    private boolean backButtonPressed = false;
-    private boolean deleteButtonPressed = false;
+    private boolean[] buttonsPressed = new boolean[4];
 
     public void createWindow(Dimension dim) {
         // create pane and frame
@@ -44,23 +40,9 @@ public class GUIHandler implements ActionListener{
     }
 
     // Check if the button pressed, and toggle off
-    public boolean isNextButtonPressed() {
-        if (nextButtonPressed) {
-            nextButtonPressed = false;
-            return true;
-        } else return false;
-    }
-
-    public boolean isBackButtonPressed() {
-        if (backButtonPressed) {
-            backButtonPressed = false;
-            return true;
-        } else return false;
-    }
-
-    public boolean isDeletePressed() {
-        if (deleteButtonPressed) {
-            deleteButtonPressed = false;
+    public boolean isButtonPressed(short buttonID) {
+        if (buttonsPressed[buttonID]) {
+            buttonsPressed[buttonID] = false;
             return true;
         } else return false;
     }
@@ -68,11 +50,13 @@ public class GUIHandler implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(NextButton.ACTION_COMMAND)) {
-            nextButtonPressed = true;
+            buttonsPressed[ButtonIDs.NEXT_BUTTON] = true;
         } else if (e.getActionCommand().equals(BackButton.ACTION_COMMAND)) {
-            backButtonPressed = true;
+            buttonsPressed[ButtonIDs.BACK_BUTTON] = true;
+        } else if (e.getActionCommand().equals(CreateButton.ACTION_COMMAND)) {
+            buttonsPressed[ButtonIDs.CREATE_BUTTON] = true;
         } else if (e.getActionCommand().equals(DeleteButton.ACTION_COMMAND)) {
-            deleteButtonPressed = true;
+            buttonsPressed[ButtonIDs.DELETE_BUTTON] = true;
         }
     }
 }

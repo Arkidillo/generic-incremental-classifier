@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class BackButton extends JButton {
+public class CreateButton extends JButton {
     private static final int WIDTH = 75;
     private static final int HEIGHT = 35;
-    public static final String ACTION_COMMAND = "<-Back";
+    public static final String ACTION_COMMAND = "Create";
 
-    public BackButton(Dimension dim) {
+    public CreateButton(Dimension dim) {
         super(ACTION_COMMAND);
         setVerticalTextPosition(AbstractButton.CENTER);
         setHorizontalTextPosition(AbstractButton.LEADING);
@@ -17,7 +17,7 @@ public class BackButton extends JButton {
         setSize(WIDTH, HEIGHT);
         setLocation(
                 (int)(dim.getWidth()*0.855),
-                (int)(dim.getHeight()*0.87)
+                (int)(dim.getHeight()*0.805)
         );
     }
 }

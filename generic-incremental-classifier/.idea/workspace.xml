@@ -22,25 +22,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrainingHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/logic/TrainingHandler.java">
+      <file leaf-file-name="CreateButton.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gui/buttons/CreateButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#176#177#0" expanded="true" />
-                <element signature="e#220#221#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUIHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/GUIHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="74" column="39" lean-forward="false" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
+            <state relative-caret-position="378">
+              <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageLoader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ImageLoader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/util/ImageLoader.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="273">
@@ -63,8 +49,8 @@
       <file leaf-file-name="BackButton.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/buttons/BackButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="326">
+              <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/src/gui/OurFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="193">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <caret line="31" column="58" lean-forward="true" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,15 +132,18 @@
         <option value="$PROJECT_DIR$/src/util/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java" />
         <option value="$PROJECT_DIR$/src/gui/NextButton.java" />
-        <option value="$PROJECT_DIR$/src/logic/TrainingHandler.java" />
         <option value="$PROJECT_DIR$/src/gui/BackButton.java" />
-        <option value="$PROJECT_DIR$/src/gui/OurFrame.java" />
-        <option value="$PROJECT_DIR$/src/gui/GUIHandler.java" />
         <option value="$PROJECT_DIR$/src/gui/DeleteButton.java" />
         <option value="$PROJECT_DIR$/src/gui/Buttons/BackButton.java" />
         <option value="$PROJECT_DIR$/src/gui/Buttons/DeleteButton.java" />
         <option value="$PROJECT_DIR$/src/gui/Buttons/NextButton.java" />
         <option value="$PROJECT_DIR$/src/util/ImageLoader.java" />
+        <option value="$PROJECT_DIR$/src/gui/buttons/ButtonIDs.java" />
+        <option value="$PROJECT_DIR$/src/gui/GUIHandler.java" />
+        <option value="$PROJECT_DIR$/src/logic/TrainingHandler.java" />
+        <option value="$PROJECT_DIR$/src/gui/OurFrame.java" />
+        <option value="$PROJECT_DIR$/src/gui/buttons/BackButton.java" />
+        <option value="$PROJECT_DIR$/src/gui/buttons/CreateButton.java" />
       </list>
     </option>
   </component>
@@ -460,30 +449,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/gui/ImagePane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#254#255#0" expanded="false" />
-            <element signature="e#291#292#0" expanded="false" />
-            <element signature="e#340#341#0" expanded="false" />
-            <element signature="e#374#375#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/GUIHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -792,30 +757,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/buttons/NextButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/TrainingHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#176#177#0" expanded="true" />
-            <element signature="e#220#221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/OurFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -824,21 +769,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUIHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="74" column="39" lean-forward="false" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
+        <state relative-caret-position="483">
+          <caret line="50" column="48" lean-forward="true" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/buttons/BackButton.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/TrainingHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="282">
+          <caret line="26" column="40" lean-forward="true" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#250#251#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/OurFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="31" column="58" lean-forward="true" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/buttons/ButtonIDs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="36" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -852,10 +825,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/buttons/NextButton.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/buttons/BackButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="326">
+          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -866,6 +839,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/buttons/CreateButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

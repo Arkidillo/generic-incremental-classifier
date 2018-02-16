@@ -1,6 +1,7 @@
 package logic;
 
 import gui.GUIHandler;
+import gui.buttons.ButtonIDs;
 import util.Utils;
 
 public class TrainingHandler {
@@ -31,9 +32,9 @@ public class TrainingHandler {
             // draw box
 
             // return when next or back button is pressed
-            if (guiHandler.isNextButtonPressed()) {
+            if (guiHandler.isButtonPressed(ButtonIDs.NEXT_BUTTON)) {
                 return true;
-            } else if (guiHandler.isBackButtonPressed()) {
+            } else if (guiHandler.isButtonPressed(ButtonIDs.BACK_BUTTON)) {
                 return false;
             }
         }
