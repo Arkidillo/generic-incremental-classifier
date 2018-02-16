@@ -15,21 +15,22 @@
       <file leaf-file-name="GenericIncrementalClassifier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+            <state relative-caret-position="294">
+              <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrainingHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrainingHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/TrainingHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            <state relative-caret-position="193">
+              <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
               <folding>
-                <element signature="e#157#158#0" expanded="true" />
-                <element signature="e#201#202#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#176#177#0" expanded="true" />
+                <element signature="e#220#221#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,22 +39,32 @@
       <file leaf-file-name="GUIHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUIHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+            <state relative-caret-position="382">
+              <caret line="71" column="39" lean-forward="false" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1046#1047#0" expanded="true" />
-                <element signature="e#1086#1087#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageLoader.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ImageLoader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/util/ImageLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1029">
-              <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
+            <state relative-caret-position="235">
+              <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeleteButton.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/DeleteButton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,8 +75,8 @@
       <file leaf-file-name="OurFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/OurFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="25" column="40" lean-forward="false" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+            <state relative-caret-position="193">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,8 +87,8 @@
       <file leaf-file-name="NextButton.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/NextButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+            <state relative-caret-position="189">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,14 +129,17 @@
         <option value="$PROJECT_DIR$/src/NextButton.java" />
         <option value="$PROJECT_DIR$/src/OurFrame.java" />
         <option value="$PROJECT_DIR$/src/gui/ImagePane.java" />
-        <option value="$PROJECT_DIR$/src/gui/NextButton.java" />
-        <option value="$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java" />
         <option value="$PROJECT_DIR$/src/gui/ButtonListener.java" />
-        <option value="$PROJECT_DIR$/src/gui/OurFrame.java" />
         <option value="$PROJECT_DIR$/src/gui/TrainingHandler.java" />
-        <option value="$PROJECT_DIR$/src/gui/GUIHandler.java" />
-        <option value="$PROJECT_DIR$/src/util/ImageLoader.java" />
+        <option value="$PROJECT_DIR$/src/util/Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java" />
+        <option value="$PROJECT_DIR$/src/gui/NextButton.java" />
         <option value="$PROJECT_DIR$/src/logic/TrainingHandler.java" />
+        <option value="$PROJECT_DIR$/src/gui/BackButton.java" />
+        <option value="$PROJECT_DIR$/src/gui/OurFrame.java" />
+        <option value="$PROJECT_DIR$/src/gui/GUIHandler.java" />
+        <option value="$PROJECT_DIR$/src/gui/DeleteButton.java" />
+        <option value="$PROJECT_DIR$/src/util/ImageLoader.java" />
       </list>
     </option>
   </component>
@@ -149,8 +163,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,16 +212,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -395,8 +409,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3281768" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3281768" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -405,8 +419,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -424,34 +438,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/OurFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/NextButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/ImagePane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -472,8 +458,6 @@
           <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -527,8 +511,6 @@
           <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -582,8 +564,6 @@
           <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -609,8 +589,6 @@
           <caret line="1" column="18" lean-forward="false" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -671,8 +649,6 @@
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -691,8 +667,6 @@
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -719,8 +693,6 @@
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -746,8 +718,6 @@
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -792,50 +762,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/ButtonListener.java" />
     <entry file="file://$PROJECT_DIR$/src/logic.java" />
-    <entry file="file://$PROJECT_DIR$/src/gui/GUIHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/util/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/GenericIncrementalClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        <state relative-caret-position="294">
+          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/OurFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/BackButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="25" column="40" lean-forward="false" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/NextButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/ImageLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1029">
-          <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
+        <state relative-caret-position="74">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -844,11 +790,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/TrainingHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        <state relative-caret-position="193">
+          <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
           <folding>
-            <element signature="e#157#158#0" expanded="true" />
-            <element signature="e#201#202#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/OurFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DeleteButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/NextButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/GUIHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="71" column="39" lean-forward="false" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/ImageLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

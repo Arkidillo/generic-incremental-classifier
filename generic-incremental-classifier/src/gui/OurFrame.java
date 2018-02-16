@@ -20,10 +20,18 @@ public class OurFrame extends JFrame {
         this.imagePane = pane;
         add(pane);
 
-        //add button
+        //add buttons
         NextButton nextButton = new NextButton(dim);
+        BackButton backButton = new BackButton(dim);
+        DeleteButton deleteButton = new DeleteButton(dim);
+
         pane.add(nextButton, 5);
+        pane.add(backButton, 5);
+        pane.add(deleteButton, 5);
+
         nextButton.addActionListener(gui);
+        backButton.addActionListener(gui);
+        deleteButton.addActionListener(gui);
     }
 
 }
