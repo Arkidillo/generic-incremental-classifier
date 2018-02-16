@@ -1,5 +1,9 @@
 package gui;
 
+import gui.buttons.BackButton;
+import gui.buttons.DeleteButton;
+import gui.buttons.NextButton;
+
 import javax.swing.*;
 import java.awt.*;
 

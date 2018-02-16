@@ -9,7 +9,7 @@ import java.io.IOException;
 public class ImageLoader {
 
     // folder that our images will be stored in
-    private static final File IMAGE_FOLDER = new File(".\\images");
+    private static final File IMAGE_FOLDER = new File("./images");
 
     // keeps track of the index of the image we are on
     // (index into the folder.listFiles() array)
@@ -19,7 +19,7 @@ public class ImageLoader {
     public static BufferedImage loadImage(String fileName){
         BufferedImage image = null;
         try {
-            image = ImageIO.read(new File(".\\images\\" + fileName));
+            image = ImageIO.read(new File("./images/" + fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
