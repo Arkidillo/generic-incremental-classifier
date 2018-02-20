@@ -1,7 +1,6 @@
 package gui;
 
 import gui.buttons.BackButton;
-import gui.buttons.CreateButton;
 import gui.buttons.DeleteButton;
 import gui.buttons.NextButton;
 
@@ -29,17 +28,14 @@ public class OurFrame extends JFrame {
         NextButton nextButton = new NextButton(dim);
         BackButton backButton = new BackButton(dim);
         DeleteButton deleteButton = new DeleteButton(dim);
-        CreateButton createButton = new CreateButton(dim);
 
         pane.add(nextButton, 5);
         pane.add(backButton, 5);
         pane.add(deleteButton, 5);
-        pane.add(createButton, 5);
 
         nextButton.addActionListener(gui);
         backButton.addActionListener(gui);
         deleteButton.addActionListener(gui);
-        createButton.addActionListener(gui);
     }
 
 }
