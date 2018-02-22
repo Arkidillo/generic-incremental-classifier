@@ -38,4 +38,16 @@ public class ImagePane extends JLayeredPane {
         labels.add(label);
     }
 
+    public void removeLabel(Label label) {
+        labels.remove(label);
+    }
+
+    // returns the first label that this click is inside of
+    public Label getLabelOnClick(Point p) {
+        for (Label label: labels) {
+            if (label.isClickInside(p)) return label;
+        }
+
+        return null;
+    }
 }

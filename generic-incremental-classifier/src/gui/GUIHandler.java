@@ -1,6 +1,7 @@
 package gui;
 
 import gui.buttons.*;
+import logic.LabelPlaceHandler;
 import util.ImageLoader;
 
 import java.awt.*;
@@ -44,6 +45,15 @@ public class GUIHandler implements ActionListener{
         frame.repaint();
     }
 
+    public void removeLabel(Label label) {
+        imagePane.removeLabel(label);
+        frame.repaint();
+    }
+
+    public Label getLabelOnClick(Point p) {
+        return imagePane.getLabelOnClick(p);
+    }
+
     // Check if the button pressed, and toggle off
     public boolean isButtonPressed(short buttonID) {
         if (buttonsPressed[buttonID]) {
@@ -60,6 +70,7 @@ public class GUIHandler implements ActionListener{
             buttonsPressed[ButtonIDs.BACK_BUTTON] = true;
         } else if (e.getActionCommand().equals(DeleteButton.ACTION_COMMAND)) {
             buttonsPressed[ButtonIDs.DELETE_BUTTON] = true;
+            removeLabel(LabelPlaceHandler.selectedLabel);
         }
     }
 }

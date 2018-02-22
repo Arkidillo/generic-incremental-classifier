@@ -17,6 +17,9 @@ public class LabelPlaceHandler implements MouseListener {
     private byte state;
     private Label newLabel;
 
+    // the last label they have clicked on, if any
+    public static Label selectedLabel;
+
     private GUIHandler gui;
     // we need the insets to correct for JFrame decoration
     private Insets insets;
@@ -30,27 +33,39 @@ public class LabelPlaceHandler implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        // adjust x,y b/c of insets
+        int adjX = e.getX() - insets.left;
+        int adjY = e.getY() - insets.top;
+
+        // first check if this click is selecting a label
+        selectedLabel = gui.getLabelOnClick(new Point(adjX, adjY));
+        // (if so, don't start creating a new one)
+        if (selectedLabel != null) return;
+
         switch (state){
             case LEFT:
-                newLabel.setLeft(e.getX() - insets.left);
+                newLabel.setLeft(adjX);
                 System.out.println("left most placed");
                 System.out.println("Click:");
                 System.out.println("right most point");
                 break;
             case RIGHT:
-                newLabel.setRight(e.getX() - insets.left);
+                newLabel.setRight(adjX);
                 System.out.println("top most point");
                 break;
             case TOP:
-                newLabel.setTop(e.getY() - insets.top);
+                newLabel.setTop(adjY);
                 System.out.println("bottom most point");
                 break;
             case BOTTOM:
-                newLabel.setBottom(e.getY() - insets.top);
+                newLabel.setBottom(adjY);
                 System.out.println("DONE PLACING");
 
                 // add the new label to the pane to display
                 gui.addLabel(newLabel);
+
+                // this will be the selected label by default
+                selectedLabel = newLabel;
 
                 // create a new label for the next one
                 newLabel = new Label();

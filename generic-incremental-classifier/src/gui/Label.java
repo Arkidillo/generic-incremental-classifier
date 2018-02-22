@@ -36,4 +36,15 @@ public class Label {
         return height;
     }
 
+    // is this Point inside this Label?
+    public boolean isClickInside(Point p) {
+        double x = p.getX();
+        double y = p.getY();
+
+        return  x > topLeft.getX() &&
+                x < topLeft.getX() + width &&
+                y > topLeft.getY() &&
+                y < topLeft.getY() + height;
+    }
+
 }
