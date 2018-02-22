@@ -39,6 +39,11 @@ public class GUIHandler implements ActionListener{
         frame.repaint();
     }
 
+    public void addLabel(Label label) {
+        imagePane.addLabel(label);
+        frame.repaint();
+    }
+
     // Check if the button pressed, and toggle off
     public boolean isButtonPressed(short buttonID) {
         if (buttonsPressed[buttonID]) {
@@ -53,8 +58,6 @@ public class GUIHandler implements ActionListener{
             buttonsPressed[ButtonIDs.NEXT_BUTTON] = true;
         } else if (e.getActionCommand().equals(BackButton.ACTION_COMMAND)) {
             buttonsPressed[ButtonIDs.BACK_BUTTON] = true;
-        } else if (e.getActionCommand().equals(CreateButton.ACTION_COMMAND)) {
-            buttonsPressed[ButtonIDs.CREATE_BUTTON] = true;
         } else if (e.getActionCommand().equals(DeleteButton.ACTION_COMMAND)) {
             buttonsPressed[ButtonIDs.DELETE_BUTTON] = true;
         }

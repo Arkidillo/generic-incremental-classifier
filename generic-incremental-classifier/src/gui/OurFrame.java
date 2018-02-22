@@ -3,6 +3,7 @@ package gui;
 import gui.buttons.BackButton;
 import gui.buttons.DeleteButton;
 import gui.buttons.NextButton;
+import logic.LabelPlaceHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ public class OurFrame extends JFrame {
 
     private ImagePane imagePane;
 
-    public OurFrame(Dimension dim, GUIHandler gui, ImagePane pane) {
+    public OurFrame(Dimension dim, GUIHandler gui, ImagePane imagePane) {
         // set-up frame
         setSize(dim);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -21,21 +22,23 @@ public class OurFrame extends JFrame {
         setVisible(true);
 
         // add imagePane
-        this.imagePane = pane;
-        add(pane);
+        this.imagePane = imagePane;
+        add(imagePane);
 
-        //add buttons
+        // add buttons
         NextButton nextButton = new NextButton(dim);
         BackButton backButton = new BackButton(dim);
         DeleteButton deleteButton = new DeleteButton(dim);
 
-        pane.add(nextButton, 5);
-        pane.add(backButton, 5);
-        pane.add(deleteButton, 5);
+        imagePane.add(nextButton, 5);
+        imagePane.add(backButton, 5);
+        imagePane.add(deleteButton, 5);
 
         nextButton.addActionListener(gui);
         backButton.addActionListener(gui);
         deleteButton.addActionListener(gui);
-    }
 
+        // add mouselistener/ labelhandler
+        addMouseListener(new LabelPlaceHandler(gui));
+    }
 }

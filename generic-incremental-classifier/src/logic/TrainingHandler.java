@@ -30,6 +30,7 @@ public class TrainingHandler {
             Utils.sleep(1);
             // wait for input
             // draw box
+            // (this is taken care of by a background listener)
 
             // return when next or back button is pressed
             if (guiHandler.isButtonPressed(ButtonIDs.NEXT_BUTTON)) {
