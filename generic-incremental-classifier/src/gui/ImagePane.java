@@ -25,9 +25,12 @@ public class ImagePane extends JLayeredPane {
         // draw our picture
         g.drawImage(image, 0, 0, this);
 
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setStroke(new BasicStroke(Label.THICKNESS));
+        g2d.setColor(Label.COLOR);
         // draw the labels
         for (Label label: labels) {
-            g.drawRect(label.getX(), label.getY(), label.getWidth(), label.getHeight());
+            g2d.drawRect(label.getX(), label.getY(), label.getWidth(), label.getHeight());
         }
     }
 

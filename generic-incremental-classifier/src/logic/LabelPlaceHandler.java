@@ -4,6 +4,7 @@ import gui.GUIHandler;
 import gui.ImagePane;
 import gui.Label;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -17,32 +18,35 @@ public class LabelPlaceHandler implements MouseListener {
     private Label newLabel;
 
     private GUIHandler gui;
+    // we need the insets to correct for JFrame decoration
+    private Insets insets;
 
-    public LabelPlaceHandler(GUIHandler gui) {
+    public LabelPlaceHandler(GUIHandler gui, Insets insets) {
         state = LEFT;
         newLabel = new Label();
         this.gui = gui;
+        this.insets = insets;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         switch (state){
             case LEFT:
-                newLabel.setLeft(e.getX());
+                newLabel.setLeft(e.getX() - insets.left);
                 System.out.println("left most placed");
                 System.out.println("Click:");
                 System.out.println("right most point");
                 break;
             case RIGHT:
-                newLabel.setRight(e.getX());
+                newLabel.setRight(e.getX() - insets.left);
                 System.out.println("top most point");
                 break;
             case TOP:
-                newLabel.setTop(e.getY());
+                newLabel.setTop(e.getY() - insets.top);
                 System.out.println("bottom most point");
                 break;
             case BOTTOM:
-                newLabel.setBottom(e.getY());
+                newLabel.setBottom(e.getY() - insets.top);
                 System.out.println("DONE PLACING");
 
                 // add the new label to the pane to display

@@ -34,11 +34,12 @@ public class OurFrame extends JFrame {
         imagePane.add(backButton, 5);
         imagePane.add(deleteButton, 5);
 
+        // the GUIHandler is listening for these button presses
         nextButton.addActionListener(gui);
         backButton.addActionListener(gui);
         deleteButton.addActionListener(gui);
 
         // add mouselistener/ labelhandler
-        addMouseListener(new LabelPlaceHandler(gui));
+        addMouseListener(new LabelPlaceHandler(gui, getInsets()));
     }
 }

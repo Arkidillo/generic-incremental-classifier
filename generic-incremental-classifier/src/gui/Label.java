@@ -3,6 +3,9 @@ package gui;
 import java.awt.*;
 
 public class Label {
+    public static final float THICKNESS = 3;
+    public static final Color COLOR = Color.BLACK;
+
     private Point topLeft = new Point();
     private int width;
     private int height;
