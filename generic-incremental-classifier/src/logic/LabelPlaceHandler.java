@@ -37,10 +37,12 @@ public class LabelPlaceHandler implements MouseListener {
         int adjX = e.getX() - insets.left;
         int adjY = e.getY() - insets.top;
 
-        // first check if this click is selecting a label
-        selectedLabel = gui.getLabelOnClick(new Point(adjX, adjY));
-        // (if so, don't start creating a new one)
-        if (selectedLabel != null) return;
+        // if not already creating, check if this click is selecting a label
+        if (state == 0) {
+            selectedLabel = gui.getLabelOnClick(new Point(adjX, adjY));
+            // (if so, don't start creating a new one)
+            if (selectedLabel != null) return;
+        }
 
         switch (state){
             case LEFT:
