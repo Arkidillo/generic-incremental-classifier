@@ -14,13 +14,23 @@ public class Label {
         topLeft.x = x;
     }
     public void setRight(int x) {
-        width = x - topLeft.x;
+        if (x < topLeft.x) {
+            width = topLeft.x - x;
+            topLeft.x = x;
+        } else {
+            width = x - topLeft.x;
+        }
     }
     public void setTop(int y) {
         topLeft.y = y;
     }
     public void setBottom(int y) {
-        height = y - topLeft.y;
+        if (y < topLeft.y) {
+            height = topLeft.y - y;
+            topLeft.y = y;
+        } else {
+            height = y - topLeft.y;
+        }
     }
 
     public int getX() {

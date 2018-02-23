@@ -32,7 +32,9 @@ public class LabelPlaceHandler implements MouseListener {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) {}
+    @Override
+    public void mousePressed(MouseEvent e) {
         // adjust x,y b/c of insets
         int adjX = e.getX() - insets.left;
         int adjY = e.getY() - insets.top;
@@ -78,9 +80,6 @@ public class LabelPlaceHandler implements MouseListener {
 
         state = (byte)((state + 1) % 4);
     }
-
-    @Override
-    public void mousePressed(MouseEvent e) {}
     @Override
     public void mouseReleased(MouseEvent e) {}
     @Override

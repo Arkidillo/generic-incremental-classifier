@@ -1,5 +1,7 @@
 package util;
 
+import main.GenericIncrementalClassifier;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -34,6 +36,19 @@ public class ImageLoader {
             image = ImageIO.read(file);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        Integer newHeight = null;
+        Integer newWidth = null;
+        if (image.getWidth() > GenericIncrementalClassifier.WINDOW_WIDTH){
+            newWidth = GenericIncrementalClassifier.WINDOW_WIDTH;
+        }
+        if (image.getHeight() > GenericIncrementalClassifier.WINDOW_HEIGHT){
+            newHeight = GenericIncrementalClassifier.WINDOW_HEIGHT;
+        }
+
+        if (newHeight != null || newWidth != null) {
+
         }
 
         return image;
