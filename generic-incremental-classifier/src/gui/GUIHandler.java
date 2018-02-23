@@ -4,6 +4,7 @@ import gui.buttons.*;
 import logic.LabelPlaceHandler;
 import util.ImageLoader;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,10 @@ public class GUIHandler implements ActionListener{
     private ImagePane imagePane;
 
     private boolean[] buttonsPressed = new boolean[4];
+
+    public GUIHandler(Dimension dim) {
+        createWindow(dim);
+    }
 
     public void createWindow(Dimension dim) {
         // create pane and frame
@@ -37,6 +42,13 @@ public class GUIHandler implements ActionListener{
         imagePane.setImage(image);
 
         // repaint is necessary to show
+        frame.repaint();
+    }
+
+    public void addTextBox(JLabel textBox) {
+        imagePane.add(textBox, 4);
+        imagePane.repaint();
+        imagePane.validate();
         frame.repaint();
     }
 

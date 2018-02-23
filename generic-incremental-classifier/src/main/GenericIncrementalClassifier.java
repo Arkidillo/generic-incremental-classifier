@@ -12,8 +12,7 @@ public class GenericIncrementalClassifier {
 
     public static void main (String [] args) {
         // Start window
-        GUIHandler gui = new GUIHandler();
-        gui.createWindow(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+        GUIHandler gui = new GUIHandler(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
 
         TrainingHandler trainer = new TrainingHandler(gui);
         gui.loadNextImage();

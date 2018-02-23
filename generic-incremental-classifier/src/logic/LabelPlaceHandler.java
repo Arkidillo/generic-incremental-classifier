@@ -3,7 +3,9 @@ package logic;
 import gui.GUIHandler;
 import gui.ImagePane;
 import gui.Label;
+import main.GenericIncrementalClassifier;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,7 +16,7 @@ public class LabelPlaceHandler implements MouseListener {
     private static final byte TOP = 2;
     private static final byte BOTTOM = 3;
 
-    private byte state;
+    private byte state = 0;
     private Label newLabel;
 
     // the last label they have clicked on, if any
@@ -24,11 +26,31 @@ public class LabelPlaceHandler implements MouseListener {
     // we need the insets to correct for JFrame decoration
     private Insets insets;
 
+    private JLabel textBox;
+
     public LabelPlaceHandler(GUIHandler gui, Insets insets) {
         state = LEFT;
         newLabel = new Label();
         this.gui = gui;
         this.insets = insets;
+        showInstructions();
+    }
+
+    public void showInstructions() {
+        // create new frame and add text box to it.
+        JFrame instructionFrame = new JFrame();
+        instructionFrame.setSize(350, 75);
+        instructionFrame.setLayout(new FlowLayout());
+        instructionFrame.setLocation(0, GenericIncrementalClassifier.WINDOW_HEIGHT);
+
+        JLabel text = new JLabel("Click left most point", JLabel.CENTER);
+
+        text.setFont(new Font(text.getFont().getName(), text.getFont().getStyle(), 20));
+        textBox = text;
+
+        instructionFrame.getContentPane().add(text);
+
+        instructionFrame.setVisible(true);
     }
 
     @Override
@@ -50,17 +72,15 @@ public class LabelPlaceHandler implements MouseListener {
         switch (state){
             case LEFT:
                 newLabel.setLeft(adjX);
-                System.out.println("left most placed");
-                System.out.println("Click:");
-                System.out.println("right most point");
+                textBox.setText("Click right most point");
                 break;
             case RIGHT:
                 newLabel.setRight(adjX);
-                System.out.println("top most point");
+                textBox.setText("Click top most point");
                 break;
             case TOP:
                 newLabel.setTop(adjY);
-                System.out.println("bottom most point");
+                textBox.setText("Click bottom most point");
                 break;
             case BOTTOM:
                 newLabel.setBottom(adjY);
