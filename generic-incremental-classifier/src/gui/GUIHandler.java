@@ -50,6 +50,10 @@ public class GUIHandler implements ActionListener{
         frame.repaint();
     }
 
+    public void removeAllLabels() {
+        imagePane.removeAllLabels();
+    }
+
     public Label getLabelOnClick(Point p) {
         return imagePane.getLabelOnClick(p);
     }
@@ -66,8 +70,10 @@ public class GUIHandler implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(NextButton.ACTION_COMMAND)) {
             buttonsPressed[ButtonIDs.NEXT_BUTTON] = true;
+            removeAllLabels();
         } else if (e.getActionCommand().equals(BackButton.ACTION_COMMAND)) {
             buttonsPressed[ButtonIDs.BACK_BUTTON] = true;
+            removeAllLabels();
         } else if (e.getActionCommand().equals(DeleteButton.ACTION_COMMAND)) {
             buttonsPressed[ButtonIDs.DELETE_BUTTON] = true;
             removeLabel(LabelPlaceHandler.selectedLabel);

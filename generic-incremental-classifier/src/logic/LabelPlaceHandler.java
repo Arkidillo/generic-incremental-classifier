@@ -44,6 +44,7 @@ public class LabelPlaceHandler implements MouseListener {
             if (selectedLabel != null) return;
         }
 
+        // set the corresponding value based on where we are in the state machine
         switch (state){
             case LEFT:
                 newLabel.setLeft(adjX);
