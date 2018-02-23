@@ -2,6 +2,7 @@ package gui;
 
 import gui.buttons.BackButton;
 import gui.buttons.DeleteButton;
+import gui.buttons.DoneButton;
 import gui.buttons.NextButton;
 import logic.LabelPlaceHandler;
 
@@ -28,16 +29,19 @@ public class OurFrame extends JFrame {
         // add buttons
         NextButton nextButton = new NextButton(dim);
         BackButton backButton = new BackButton(dim);
+        DoneButton doneButton = new DoneButton(dim);
         DeleteButton deleteButton = new DeleteButton(dim);
 
         imagePane.add(nextButton, 5);
         imagePane.add(backButton, 5);
+        imagePane.add(doneButton, 5);
         imagePane.add(deleteButton, 5);
 
         // the GUIHandler is listening for these button presses
         nextButton.addActionListener(gui);
         backButton.addActionListener(gui);
         deleteButton.addActionListener(gui);
+        doneButton.addActionListener(gui);
 
         // add mouselistener/ labelhandler
         addMouseListener(new LabelPlaceHandler(gui, getInsets()));
