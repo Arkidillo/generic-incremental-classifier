@@ -1,5 +1,7 @@
 package gui;
 
+import logic.LabelPlaceHandler;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -30,7 +32,13 @@ public class ImagePane extends JLayeredPane {
         g2d.setColor(Label.COLOR);
         // draw the labels
         for (Label label: labels) {
+            if (label == LabelPlaceHandler.selectedLabel) {
+                g2d.setColor(Color.CYAN);
+            }
             g2d.drawRect(label.getX(), label.getY(), label.getWidth(), label.getHeight());
+            if (label == LabelPlaceHandler.selectedLabel) {
+                g2d.setColor(Color.BLACK);
+            }
         }
     }
 

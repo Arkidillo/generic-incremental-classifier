@@ -38,23 +38,32 @@ public class ImageLoader {
             e.printStackTrace();
         }
 
-        Integer newHeight = null;
-        Integer newWidth = null;
-        if (image.getWidth() > GenericIncrementalClassifier.WINDOW_WIDTH){
-            newWidth = GenericIncrementalClassifier.WINDOW_WIDTH;
-        }
-        if (image.getHeight() > GenericIncrementalClassifier.WINDOW_HEIGHT){
-            newHeight = GenericIncrementalClassifier.WINDOW_HEIGHT;
+        if (image == null) {
+            System.err.println("ERROR: Could not call loadImage on : " + file.getName());
+            return null;
         }
 
-        if (newHeight != null || newWidth != null) {
+        int defaultWidth = GenericIncrementalClassifier.WINDOW_WIDTH;
+        int defaultHeight = GenericIncrementalClassifier.WINDOW_HEIGHT;
 
+        Integer newWidth = image.getWidth();
+        Integer newHeight = image.getHeight();
+        if (image.getWidth() > defaultWidth){
+            newWidth = defaultWidth;
+        }
+        if (image.getHeight() > defaultHeight){
+            newHeight = defaultHeight;
+        }
+
+        if (newWidth != image.getWidth() || newHeight != image.getHeight()) {
+            System.out.println("Resized to (" + newWidth + ", " + newHeight + ")");
+            image = resizeImage(image, newWidth, newHeight);
         }
 
         return image;
     }
 
-    public static BufferedImage resizeImage(int width, int height, Image image){
+    public static BufferedImage resizeImage(Image image, int width, int height){
         Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 

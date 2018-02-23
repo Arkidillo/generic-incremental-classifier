@@ -39,7 +39,7 @@ public class LabelPlaceHandler implements MouseListener {
     public void showInstructions() {
         // create new frame and add text box to it.
         JFrame instructionFrame = new JFrame();
-        instructionFrame.setSize(350, 75);
+        instructionFrame.setSize(450, 75);
         instructionFrame.setLayout(new FlowLayout());
         instructionFrame.setLocation(0, GenericIncrementalClassifier.WINDOW_HEIGHT);
 
@@ -63,6 +63,7 @@ public class LabelPlaceHandler implements MouseListener {
 
         // if not already creating, check if this click is selecting a label
         if (state == 0) {
+            gui.callRepaint();
             selectedLabel = gui.getLabelOnClick(new Point(adjX, adjY));
             // (if so, don't start creating a new one)
             if (selectedLabel != null) return;
@@ -84,7 +85,7 @@ public class LabelPlaceHandler implements MouseListener {
                 break;
             case BOTTOM:
                 newLabel.setBottom(adjY);
-                System.out.println("DONE PLACING");
+                textBox.setText("DONE. Click left to start new");
 
                 // add the new label to the pane to display
                 gui.addLabel(newLabel);

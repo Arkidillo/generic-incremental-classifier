@@ -36,6 +36,10 @@ public class GUIHandler implements ActionListener{
         frame.repaint();
     }
 
+    public void callRepaint() {
+        frame.repaint();
+    }
+
     public void loadPrevImage() {
         // create + set the image
         BufferedImage image = ImageLoader.loadPrevImage();
