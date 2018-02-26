@@ -6,19 +6,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 // A panel that draws the image that is set
 public class ImagePane extends JLayeredPane {
 
-    private ArrayList<Label> labels = new ArrayList<>();
+    private HashMap<Integer, ArrayList<Label>> labels = new HashMap<>();
     private BufferedImage image;
+    private int currentImageIndex = 0;
 
     public ImagePane(Dimension dim) {
         setPreferredSize(dim);
     }
 
-    public void setImage(BufferedImage image) {
+    public void setImage(BufferedImage image, int imageIndex) {
         this.image = image;
+        this.currentImageIndex = imageIndex;
     }
 
     @Override
@@ -31,7 +34,8 @@ public class ImagePane extends JLayeredPane {
         g2d.setStroke(new BasicStroke(Label.THICKNESS));
         g2d.setColor(Label.COLOR);
         // draw the labels
-        for (Label label: labels) {
+        if (!labels.containsKey(currentImageIndex)) return;
+        for (Label label: labels.get(currentImageIndex)) {
             if (label == LabelPlaceHandler.selectedLabel) {
                 g2d.setColor(Color.CYAN);
             }
@@ -43,22 +47,22 @@ public class ImagePane extends JLayeredPane {
     }
 
     public void addLabel(Label label) {
-        labels.add(label);
+        if (!labels.containsKey(currentImageIndex)) {
+            labels.put(currentImageIndex, new ArrayList<>());
+        }
+        labels.get(currentImageIndex).add(label);
     }
 
     public void removeLabel(Label label) {
-        labels.remove(label);
-    }
-
-    public void removeAllLabels() {
-        labels = new ArrayList<>();
+        labels.get(currentImageIndex).remove(label);
     }
 
     // returns the first label that this click is inside of
     // start with the most recently added labels
     public Label getLabelOnClick(Point p) {
-        for (int i = labels.size() - 1; i >= 0; i--) {
-            Label label = labels.get(i);
+        if (!labels.containsKey(currentImageIndex)) return null;
+        for (int i = labels.get(currentImageIndex).size() - 1; i >= 0; i--) {
+            Label label = labels.get(currentImageIndex).get(i);
             if (label.isClickInside(p)) return label;
         }
 

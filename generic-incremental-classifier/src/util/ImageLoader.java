@@ -17,6 +17,10 @@ public class ImageLoader {
     // (index into the folder.listFiles() array)
     private static int imageIndex = -1;
 
+    public static int getImageIndex() {
+        return imageIndex;
+    }
+
     // take filename of image in 'images' folder and return ImageIcon object
     public static BufferedImage loadImage(String fileName){
         BufferedImage image = null;
