@@ -33,7 +33,7 @@ public class GUIHandler implements ActionListener{
     public void loadNextImage() {
         // create + set the image
         BufferedImage image = ImageLoader.loadNextImage();
-        imagePane.setImage(image, ImageLoader.getImageIndex());
+        imagePane.setImage(image, ImageLoader.getCurrentFileName());
 
         // repaint is necessary to show
         frame.repaint();
@@ -46,7 +46,7 @@ public class GUIHandler implements ActionListener{
     public void loadPrevImage() {
         // create + set the image
         BufferedImage image = ImageLoader.loadPrevImage();
-        imagePane.setImage(image, ImageLoader.getImageIndex());
+        imagePane.setImage(image, ImageLoader.getCurrentFileName());
 
         // repaint is necessary to show
         frame.repaint();

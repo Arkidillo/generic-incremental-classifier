@@ -16,9 +16,10 @@ public class ImageLoader {
     // keeps track of the index of the image we are on
     // (index into the folder.listFiles() array)
     private static int imageIndex = -1;
+    private static String currFileName;
 
-    public static int getImageIndex() {
-        return imageIndex;
+    public static String getCurrentFileName() {
+        return currFileName;
     }
 
     // take filename of image in 'images' folder and return ImageIcon object
@@ -90,9 +91,13 @@ public class ImageLoader {
 
         // read the next image and increment the index, unless we have reached the list image
         if (imageIndex < listOfFiles.length - 1) {
-            return loadImage(listOfFiles[++imageIndex]);
+            File currFile = listOfFiles[++imageIndex];
+            currFileName = currFile.getName();
+            return loadImage(currFile);
         } else {
-            return loadImage(listOfFiles[listOfFiles.length - 1]);
+            File currFile = listOfFiles[listOfFiles.length - 1];
+            currFileName = currFile.getName();
+            return loadImage(currFile);
         }
     }
 
@@ -107,9 +112,13 @@ public class ImageLoader {
 
         // read the next image and increment the index, unless we have reached the list image
         if (imageIndex > 0) {
-            return loadImage(listOfFiles[--imageIndex]);
+            File currFile = listOfFiles[--imageIndex];
+            currFileName = currFile.getName();
+            return loadImage(currFile);
         } else {
-            return loadImage(listOfFiles[0]);
+            File currFile = listOfFiles[0];
+            currFileName = currFile.getName();
+            return loadImage(currFile);
         }
     }
 }

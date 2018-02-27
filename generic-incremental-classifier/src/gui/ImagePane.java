@@ -12,21 +12,21 @@ import java.util.HashMap;
 // A panel that draws the image that is set
 public class ImagePane extends JLayeredPane {
 
-    private HashMap<Integer, ArrayList<Label>> labels = new HashMap<>();
+    private HashMap<String, ArrayList<Label>> labels = new HashMap<>();
     private BufferedImage image;
-    private int currentImageIndex = 0;
+    private String currentFileName;
 
     public ImagePane(Dimension dim) {
         setPreferredSize(dim);
     }
 
-    public HashMap<Integer, ArrayList<Label>> getLabels() {
+    public HashMap<String, ArrayList<Label>> getLabels() {
         return labels;
     }
 
-    public void setImage(BufferedImage image, int imageIndex) {
+    public void setImage(BufferedImage image, String fileName) {
         this.image = image;
-        this.currentImageIndex = imageIndex;
+        this.currentFileName = fileName;
     }
 
     @Override
@@ -39,8 +39,8 @@ public class ImagePane extends JLayeredPane {
         g2d.setStroke(new BasicStroke(Label.THICKNESS));
         g2d.setColor(Label.COLOR);
         // draw the labels
-        if (!labels.containsKey(currentImageIndex)) return;
-        for (Label label: labels.get(currentImageIndex)) {
+        if (!labels.containsKey(currentFileName)) return;
+        for (Label label: labels.get(currentFileName)) {
             if (label == LabelPlaceHandler.selectedLabel) {
                 g2d.setColor(Color.CYAN);
             }
@@ -52,22 +52,22 @@ public class ImagePane extends JLayeredPane {
     }
 
     public void addLabel(Label label) {
-        if (!labels.containsKey(currentImageIndex)) {
-            labels.put(currentImageIndex, new ArrayList<>());
+        if (!labels.containsKey(currentFileName)) {
+            labels.put(currentFileName, new ArrayList<>());
         }
-        labels.get(currentImageIndex).add(label);
+        labels.get(currentFileName).add(label);
     }
 
     public void removeLabel(Label label) {
-        labels.get(currentImageIndex).remove(label);
+        labels.get(currentFileName).remove(label);
     }
 
     // returns the first label that this click is inside of
     // start with the most recently added labels
     public Label getLabelOnClick(Point p) {
-        if (!labels.containsKey(currentImageIndex)) return null;
-        for (int i = labels.get(currentImageIndex).size() - 1; i >= 0; i--) {
-            Label label = labels.get(currentImageIndex).get(i);
+        if (!labels.containsKey(currentFileName)) return null;
+        for (int i = labels.get(currentFileName).size() - 1; i >= 0; i--) {
+            Label label = labels.get(currentFileName).get(i);
             if (label.isClickInside(p)) return label;
         }
 
