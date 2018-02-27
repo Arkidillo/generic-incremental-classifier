@@ -1,5 +1,8 @@
-package gui;
+package logic;
 
+import gui.ImagePane;
+import gui.Label;
+import gui.OurFrame;
 import gui.buttons.*;
 import logic.LabelPlaceHandler;
 import util.ImageLoader;
@@ -56,12 +59,12 @@ public class GUIHandler implements ActionListener{
         frame.repaint();
     }
 
-    public void addLabel(Label label) {
+    public void addLabel(gui.Label label) {
         imagePane.addLabel(label);
         frame.repaint();
     }
 
-    public void removeLabel(Label label) {
+    public void removeLabel(gui.Label label) {
         imagePane.removeLabel(label);
         frame.repaint();
     }
@@ -87,6 +90,9 @@ public class GUIHandler implements ActionListener{
         } else if (e.getActionCommand().equals(DeleteButton.ACTION_COMMAND)) {
             buttonsPressed[ButtonIDs.DELETE_BUTTON] = true;
             removeLabel(LabelPlaceHandler.selectedLabel);
+        } else if (e.getActionCommand().equals(DoneButton.ACTION_COMMAND)) {
+            // Call gson handler
+            new GsonHandler(imagePane.getLabels());
         }
     }
 }

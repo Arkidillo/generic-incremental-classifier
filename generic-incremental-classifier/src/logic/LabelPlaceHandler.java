@@ -1,7 +1,5 @@
 package logic;
 
-import gui.GUIHandler;
-import gui.ImagePane;
 import gui.Label;
 import main.GenericIncrementalClassifier;
 

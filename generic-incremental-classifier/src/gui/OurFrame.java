@@ -4,6 +4,7 @@ import gui.buttons.BackButton;
 import gui.buttons.DeleteButton;
 import gui.buttons.DoneButton;
 import gui.buttons.NextButton;
+import logic.GUIHandler;
 import logic.LabelPlaceHandler;
 
 import javax.swing.*;

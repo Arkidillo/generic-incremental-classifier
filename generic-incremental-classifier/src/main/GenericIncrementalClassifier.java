@@ -1,6 +1,6 @@
 package main;
 
-import gui.GUIHandler;
+import logic.GUIHandler;
 import logic.TrainingHandler;
 
 import java.awt.*;

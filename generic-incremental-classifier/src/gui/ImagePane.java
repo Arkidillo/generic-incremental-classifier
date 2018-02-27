@@ -1,5 +1,6 @@
 package gui;
 
+import com.google.gson.Gson;
 import logic.LabelPlaceHandler;
 
 import javax.swing.*;
@@ -17,6 +18,10 @@ public class ImagePane extends JLayeredPane {
 
     public ImagePane(Dimension dim) {
         setPreferredSize(dim);
+    }
+
+    public HashMap<Integer, ArrayList<Label>> getLabels() {
+        return labels;
     }
 
     public void setImage(BufferedImage image, int imageIndex) {

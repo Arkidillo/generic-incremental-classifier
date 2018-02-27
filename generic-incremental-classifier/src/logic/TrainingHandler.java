@@ -1,6 +1,5 @@
 package logic;
 
-import gui.GUIHandler;
 import gui.buttons.ButtonIDs;
 import util.Utils;
 
