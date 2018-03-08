@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ImageLoader {
 
     // folder that our images will be stored in
-    private static final File IMAGE_FOLDER = new File("./images/");
+    public static final File IMAGE_FOLDER = new File("./images/");
 
     // keeps track of the index of the image we are on
     // (index into the folder.listFiles() array)

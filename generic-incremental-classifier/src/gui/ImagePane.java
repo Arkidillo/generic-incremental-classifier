@@ -27,6 +27,8 @@ public class ImagePane extends JLayeredPane {
     public void setImage(BufferedImage image, String fileName) {
         this.image = image;
         this.currentFileName = fileName;
+        // Create a new arrayList for the labels in this picture as soon as the image is set
+        labels.put(currentFileName, new ArrayList<>());
     }
 
     @Override
@@ -52,9 +54,6 @@ public class ImagePane extends JLayeredPane {
     }
 
     public void addLabel(Label label) {
-        if (!labels.containsKey(currentFileName)) {
-            labels.put(currentFileName, new ArrayList<>());
-        }
         labels.get(currentFileName).add(label);
     }
 
