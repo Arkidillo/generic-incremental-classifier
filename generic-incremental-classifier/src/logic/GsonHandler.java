@@ -22,8 +22,8 @@ public class GsonHandler {
 
     public GsonHandler(HashMap<String, ArrayList<Label>> allLabels) {
         // Make sure the folder is cleared
-        clearLabelsFolder();
         createFolders();
+        clearFolders();
 
         // For each image/ entry in hashmap, save a JSON
         Iterator it = allLabels.entrySet().iterator();
@@ -62,13 +62,23 @@ public class GsonHandler {
             }
             i++;
         }
-
-        //Utils.copyFile();
-
     }
 
-    public void clearLabelsFolder() {
-        File[] files = new File(LABELS_FOLDER).listFiles();
+    public void clearFolders() {
+        File[] files;
+        files = new File(LABELS_FOLDER).listFiles();
+        if (files != null) { //some JVMs return null for empty dirs
+            for (File f: files) {
+                f.delete();
+            }
+        }
+        files = new File(POSITIVE_IMAGES_FOLDER).listFiles();
+        if (files != null) { //some JVMs return null for empty dirs
+            for (File f: files) {
+                f.delete();
+            }
+        }
+        files = new File(NEGATIVE_IMAGES_FOLDER).listFiles();
         if (files != null) { //some JVMs return null for empty dirs
             for (File f: files) {
                 f.delete();

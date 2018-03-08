@@ -1,0 +1,1 @@
+java -jar ./generic-incremental-classifier.jar
