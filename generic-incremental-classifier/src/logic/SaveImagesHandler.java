@@ -43,7 +43,12 @@ public class SaveImagesHandler {
                 // Load the original buffered image, for cropping
                 BufferedImage originalImage = ImageHandler.loadImage(fileName);
                 // Save the cropped image back
-                ImageHandler.saveImage(ImageHandler.cropImageToLabel(originalImage, labels.get(j)), fileName, ImageHandler.POSITIVE_IMAGE);
+                // Add an extra '_i' for whatever label number it is
+                // Need to remove the file ext first, add the _i, then add back the ext.
+                String ext = Utils.getExtension(fileName);
+                String truncatedFilename = fileName.substring(0, fileName.length() - (ext.length() + 1));
+                String labeledFilename = truncatedFilename + '_' + j + "." + ext;
+                ImageHandler.saveImage(ImageHandler.cropImageToLabel(originalImage, labels.get(j)), labeledFilename, ImageHandler.POSITIVE_IMAGE);
             }
         }
     }
