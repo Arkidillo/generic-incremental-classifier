@@ -28,7 +28,17 @@ public class Utils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    // given the name of the file, get the '.x' file extension
+    public static String getExtension(String filename) {
+        // get the index of the '.'
+        int i = filename.length() - 1;
+        for (; i >= 0; i--) {
+             if (filename.charAt(i) == '.') break;
+        }
 
+        // Start from the . to the end of the filename
+        return filename.substring(i + 1, filename.length());
     }
 }

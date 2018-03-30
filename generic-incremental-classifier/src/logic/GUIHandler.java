@@ -4,8 +4,7 @@ import gui.ImagePane;
 import gui.Label;
 import gui.OurFrame;
 import gui.buttons.*;
-import logic.LabelPlaceHandler;
-import util.ImageLoader;
+import util.ImageHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,8 +31,8 @@ public class GUIHandler implements ActionListener{
     // add the next image in the folder to the screen (pane)
     public void loadNextImage() {
         // create + set the image
-        BufferedImage image = ImageLoader.loadNextImage();
-        imagePane.setImage(image, ImageLoader.getCurrentFileName());
+        BufferedImage image = ImageHandler.loadNextImage();
+        imagePane.setImage(image, ImageHandler.getCurrentFileName());
 
         // repaint is necessary to show
         frame.repaint();
@@ -45,8 +44,8 @@ public class GUIHandler implements ActionListener{
 
     public void loadPrevImage() {
         // create + set the image
-        BufferedImage image = ImageLoader.loadPrevImage();
-        imagePane.setImage(image, ImageLoader.getCurrentFileName());
+        BufferedImage image = ImageHandler.loadPrevImage();
+        imagePane.setImage(image, ImageHandler.getCurrentFileName());
 
         // repaint is necessary to show
         frame.repaint();
@@ -59,12 +58,12 @@ public class GUIHandler implements ActionListener{
         frame.repaint();
     }
 
-    public void addLabel(gui.Label label) {
+    public void addLabel(Label label) {
         imagePane.addLabel(label);
         frame.repaint();
     }
 
-    public void removeLabel(gui.Label label) {
+    public void removeLabel(Label label) {
         imagePane.removeLabel(label);
         frame.repaint();
     }
@@ -92,7 +91,10 @@ public class GUIHandler implements ActionListener{
             removeLabel(LabelPlaceHandler.selectedLabel);
         } else if (e.getActionCommand().equals(DoneButton.ACTION_COMMAND)) {
             // Call gson handler
-            new GsonHandler(imagePane.getLabels());
+            //new GsonHandler(imagePane.getLabels());
+
+            // Crop all images to their labels, and save.
+            SaveImagesHandler.saveAllImages(imagePane.getLabels());
         }
     }
 }

@@ -2,7 +2,7 @@ package logic;
 
 import com.google.gson.Gson;
 import gui.Label;
-import util.ImageLoader;
+import util.ImageHandler;
 import util.Utils;
 
 import java.io.BufferedWriter;
@@ -40,7 +40,7 @@ public class GsonHandler {
             else                    imageFolder = POSITIVE_IMAGES_FOLDER;
 
             // Copy the image from the original folder to the correct neg./pos. folder
-            File sourceImage = new File("./" + ImageLoader.IMAGE_FOLDER.getName() + "/" + imageName);
+            File sourceImage = new File("./" + ImageHandler.IMAGE_FOLDER.getName() + "/" + imageName);
             File destinationImage = new File(imageFolder + imageName);
             // Create the new image file so java won't complain it doesn't exist
             try {

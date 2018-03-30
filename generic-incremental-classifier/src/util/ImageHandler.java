@@ -1,5 +1,6 @@
 package util;
 
+import gui.Label;
 import main.GenericIncrementalClassifier;
 
 import javax.imageio.ImageIO;
@@ -8,10 +9,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ImageLoader {
+public class ImageHandler {
 
     // folder that our images will be stored in
     public static final File IMAGE_FOLDER = new File("./images/");
+    private static final String POSITIVE_IMAGES_FOLDER = "./positive_images/";
+    private static final String NEGATIVE_IMAGES_FOLDER = "./negative_images/";
+
+    // macro determining whether the image is a positive or negative example
+    public static final byte NEGATIVE_IMAGE = 0;
+    public static final byte POSITIVE_IMAGE = 1;
 
     // keeps track of the index of the image we are on
     // (index into the folder.listFiles() array)
@@ -68,6 +75,32 @@ public class ImageLoader {
         return image;
     }
 
+    // save the given image to an image file (as whatever image type it started as)
+    public static void saveImage(BufferedImage image, String imageName, byte positiveOrNegative) {
+        String filePath;
+        if (positiveOrNegative == POSITIVE_IMAGE) {
+            filePath = POSITIVE_IMAGES_FOLDER;
+        } else {
+            filePath = NEGATIVE_IMAGES_FOLDER;
+        }
+
+        filePath += imageName;
+
+        File outputfile = new File(filePath);
+        try {
+            outputfile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            if (!ImageIO.write(image, Utils.getExtension(filePath), outputfile)) {
+                System.err.println("Image write error!");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static BufferedImage resizeImage(Image image, int width, int height){
         Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -80,13 +113,19 @@ public class ImageLoader {
         return bi;
     }
 
+    // given the rectangular label, crop the image to just the label
+    public static BufferedImage cropImageToLabel(BufferedImage image, Label label) {
+        return image.getSubimage(label.getX(), label.getY(), label.getWidth(), label.getHeight());
+    }
+
     // return next image in the 'images' folder.
     public static BufferedImage loadNextImage() {
         File[] listOfFiles = IMAGE_FOLDER.listFiles();
 
         // ensure the folder exists
-        if (listOfFiles == null) {
+        if (listOfFiles == null || listOfFiles.length == 0) {
             System.err.println("ERROR: Folder is empty or cannot be found");
+            return null;
         }
 
         // read the next image and increment the index, unless we have reached the list image
