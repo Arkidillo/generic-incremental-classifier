@@ -22,6 +22,10 @@ public class GUIHandler implements ActionListener{
         createWindow(dim);
     }
 
+    public ImagePane getImagePane() {
+        return imagePane;
+    }
+
     public void createWindow(Dimension dim) {
         // create pane and frame
         imagePane   = new ImagePane(dim);

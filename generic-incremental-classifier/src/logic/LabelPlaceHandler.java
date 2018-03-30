@@ -7,8 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 
 public class LabelPlaceHandler implements MouseListener {
+    // LEFT and NOT_CREATING are the same because left is the first point you place
+    private static final byte NOT_CREATING = 0;
     private static final byte LEFT = 0;
     private static final byte RIGHT = 1;
     private static final byte TOP = 2;
@@ -27,7 +30,7 @@ public class LabelPlaceHandler implements MouseListener {
     private JLabel textBox;
 
     public LabelPlaceHandler(GUIHandler gui, Insets insets) {
-        state = LEFT;
+        state = NOT_CREATING;
         newLabel = new Label();
         this.gui = gui;
         this.insets = insets;
@@ -55,12 +58,12 @@ public class LabelPlaceHandler implements MouseListener {
     public void mouseClicked(MouseEvent e) {}
     @Override
     public void mousePressed(MouseEvent e) {
-        // adjust x,y b/c of insets
-        int adjX = e.getX() - insets.left;
-        int adjY = e.getY() - insets.top;
+        // adjust x,y b/c of insets, and make sure they are not out of bounds
+        int adjX = correctOutOfBoundsX(e.getX() - insets.left);
+        int adjY = correctOutOfBoundsY(e.getY() - insets.top);
 
         // if not already creating, check if this click is selecting a label
-        if (state == 0) {
+        if (state == NOT_CREATING) {
             gui.callRepaint();
             selectedLabel = gui.getLabelOnClick(new Point(adjX, adjY));
             // (if so, don't start creating a new one)
@@ -99,6 +102,18 @@ public class LabelPlaceHandler implements MouseListener {
 
         state = (byte)((state + 1) % 4);
     }
+
+    private int correctOutOfBoundsX(int x) {
+        BufferedImage currImage = gui.getImagePane().getImage();
+        // We don't have to worry about X being < 0 because they can't physically click there
+        return Math.min(x, currImage.getWidth());
+    }
+
+    private int correctOutOfBoundsY(int y) {
+        BufferedImage currImage = gui.getImagePane().getImage();
+        return Math.min(y, currImage.getHeight());
+    }
+
     @Override
     public void mouseReleased(MouseEvent e) {}
     @Override

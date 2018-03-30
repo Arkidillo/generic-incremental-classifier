@@ -32,6 +32,10 @@ public class ImagePane extends JLayeredPane {
             labels.put(currentFileName, new ArrayList<>());
     }
 
+    public BufferedImage getImage() {
+        return image;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

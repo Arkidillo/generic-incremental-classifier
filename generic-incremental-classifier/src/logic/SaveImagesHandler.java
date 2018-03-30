@@ -18,7 +18,6 @@ import java.util.Map;
 public class SaveImagesHandler {
     private static final String POSITIVE_IMAGES_FOLDER = "./positive_images/";
     private static final String NEGATIVE_IMAGES_FOLDER = "./negative_images/";
-    private static final String FILE_SUFFIX = "_labels.json";
 
     public static void saveAllImages(HashMap<String, ArrayList<Label>> allLabels) {
         // Make sure the folder is cleared
