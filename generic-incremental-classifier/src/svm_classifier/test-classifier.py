@@ -1,12 +1,13 @@
 # Import the required modules
-from skimage.transform import pyramid_gaussian
+from skimage.transform.pyramids import pyramid_gaussian
 from imageio import imread
 from skimage.feature import hog
 from sklearn.externals import joblib
-import cv2
-import argparse as ap
+import cv2 
 from nms import nms
-from config import *
+import pickle
+
+model_path = 'linear_svc_model/trained_svm.clf'
 
 def sliding_window(image, window_size, step_size):
     '''
@@ -25,39 +26,47 @@ def sliding_window(image, window_size, step_size):
     * y is the top-left y co-ordinate
     * im_window is the sliding window image
     '''
-    for y in xrange(0, image.shape[0], step_size[1]):
-        for x in xrange(0, image.shape[1], step_size[0]):
+    for y in range(0, image.shape[0], step_size[1]):
+        for x in range(0, image.shape[1], step_size[0]):
             yield (x, y, image[y:y + window_size[1], x:x + window_size[0]])
 
 if __name__ == "__main__":
 
     # Read the image
-    im = imread('/test_images/Pless_291x300px.jpg', as_grey=False)
     min_wdw_sz = (100, 40)
     step_size = (10, 10)
     downscale = 1.25
     visualize_det = True
 
+    im = cv2.imread('cs-research_0_0.jpg')
+    im = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)
+    original_image = im.copy()
+
     # Load the classifier
-    clf = joblib.load(model_path)
+    print(model_path)
+    clf = pickle.load(open(model_path, 'rb'))
 
     # List to store the detections
     detections = []
     # The current scale of the image
     scale = 0
     # Downscale the image and iterate
-    for im_scaled in pyramid_gaussian(im, downscale=downscale):
+    for i in range(0, 6):
         # This list contains detections at the current scale
         cd = []
         # If the width or height of the scaled image is less than
         # the width or height of the window, then end the iterations.
-        if im_scaled.shape[0] < min_wdw_sz[1] or im_scaled.shape[1] < min_wdw_sz[0]:
+        if im.shape[0] < min_wdw_sz[1] or im.shape[1] < min_wdw_sz[0]:
             break
-        for (x, y, im_window) in sliding_window(im_scaled, min_wdw_sz, step_size):
+        for (x, y, im_window) in sliding_window(im, min_wdw_sz, step_size):
             if im_window.shape[0] != min_wdw_sz[1] or im_window.shape[1] != min_wdw_sz[0]:
                 continue
-            # Calculate the HOG features
-            fd = hog(im_window, orientations, pixels_per_cell, cells_per_block, visualize, normalize)
+            # Calculate the HOG features    
+            fd = hog(im_window, orientations=9, pixels_per_cell=(8,8), 
+                cells_per_block=(3, 3), visualise=False)
+            print(len(fd))
+            fd = fd.reshape(1, -1)
+
             pred = clf.predict(fd)
             if pred == 1:
                 print("Detection:: Location -> ({}, {})".format(x, y))
@@ -69,7 +78,7 @@ if __name__ == "__main__":
             # If visualize is set to true, display the working
             # of the sliding window
             if visualize_det:
-                clone = im_scaled.copy()
+                clone = im.copy()
                 for x1, y1, _, _, _  in cd:
                     # Draw the detections at this scale
                     cv2.rectangle(clone, (x1, y1), (x1 + im_window.shape[1], y1 +
@@ -80,9 +89,10 @@ if __name__ == "__main__":
                 cv2.waitKey(30)
         # Move the the next scale
         scale+=1
+        im = cv2.pyrDown(im)
 
     # Display the results before performing NMS
-    clone = im.copy()
+    clone = original_image.copy()
     for (x_tl, y_tl, _, w, h) in detections:
         # Draw the detections
         cv2.rectangle(im, (x_tl, y_tl), (x_tl+w, y_tl+h), (0, 0, 0), thickness=2)
@@ -90,11 +100,12 @@ if __name__ == "__main__":
     cv2.waitKey()
 
     # Perform Non Maxima Suppression
-    detections = nms(detections, threshold)
+    detections = nms(detections, 0.99)
 
     # Display the results after performing NMS
     for (x_tl, y_tl, _, w, h) in detections:
         # Draw the detections
+        #clone = cv2.resize(clone, (512, 512))
         cv2.rectangle(clone, (x_tl, y_tl), (x_tl+w,y_tl+h), (0, 0, 0), thickness=2)
     cv2.imshow("Final Detections after applying NMS", clone)
     cv2.waitKey()

@@ -7,6 +7,7 @@ import os
 import joblib
 import numpy as np
 from sklearn import svm
+import pickle
 
 if __name__ == "__main__":
     pos_feat_dir = 'positive_features/'
@@ -39,6 +40,6 @@ if __name__ == "__main__":
     if not os.path.isdir(model_path):
         os.makedirs(model_path)
 
-    model_path = os.path.join(model_path, 'trained_svm')
-    joblib.dump(clf, model_path)
+    model_path = os.path.join(model_path, 'trained_svm.clf')
+    pickle.dump(clf, open(model_path, 'wb'))
     print("Classifier saved to {}".format(model_path))

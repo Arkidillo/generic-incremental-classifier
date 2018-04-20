@@ -11,7 +11,7 @@ neg_im_path = 'negative_images/'
 pos_feat_dir = 'positive_features/'
 neg_feat_dir = 'negative_features/'
 
-scale_size = (512, 512)
+scale_size = (100, 40)
 
 
 # If feature directories don't exist, create them
@@ -31,7 +31,6 @@ for im_path in glob.glob(os.path.join(pos_im_path, "*")):
 	gray_im = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)
 
 	resize_im = cv2.resize(gray_im, scale_size)
-
 	# Resize the imag
 	fd = hog(resize_im, orientations=9, pixels_per_cell=(8,8), 
 		cells_per_block=(3, 3), visualise=False)
