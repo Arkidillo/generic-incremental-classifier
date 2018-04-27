@@ -18,7 +18,6 @@ def sliding_window(image, window_size, step_size):
     * `image` - Input Image
     * `window_size` - Size of Sliding Window
     * `step_size` - Incremented Size of Window
-
     The function returns a tuple -
     (x, y, im_window)
     where
@@ -33,12 +32,12 @@ def sliding_window(image, window_size, step_size):
 if __name__ == "__main__":
 
     # Read the image
-    min_wdw_sz = (100, 40)
+    min_wdw_sz = (64, 64)
     step_size = (10, 10)
     downscale = 1.25
     visualize_det = True
 
-    im = cv2.imread('cs-research_0_0.jpg')
+    im = cv2.imread('test-1.pgm')
     im = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)
     original_image = im.copy()
 
@@ -62,9 +61,8 @@ if __name__ == "__main__":
             if im_window.shape[0] != min_wdw_sz[1] or im_window.shape[1] != min_wdw_sz[0]:
                 continue
             # Calculate the HOG features    
-            fd = hog(im_window, orientations=9, pixels_per_cell=(8,8), 
+            fd = hog(im_window, orientations=9, pixels_per_cell=(16,16), 
                 cells_per_block=(3, 3), visualise=False)
-            print(len(fd))
             fd = fd.reshape(1, -1)
 
             pred = clf.predict(fd)
@@ -100,7 +98,7 @@ if __name__ == "__main__":
     cv2.waitKey()
 
     # Perform Non Maxima Suppression
-    detections = nms(detections, 0.99)
+    detections = nms(detections, 0.1)
 
     # Display the results after performing NMS
     for (x_tl, y_tl, _, w, h) in detections:
