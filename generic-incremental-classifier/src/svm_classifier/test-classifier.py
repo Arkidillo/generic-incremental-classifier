@@ -6,8 +6,7 @@ from sklearn.externals import joblib
 import cv2 
 from nms import nms
 import pickle
-
-model_path = 'linear_svc_model/trained_svm.clf'
+from config import *
 
 def sliding_window(image, window_size, step_size):
     '''
@@ -32,18 +31,15 @@ def sliding_window(image, window_size, step_size):
 if __name__ == "__main__":
 
     # Read the image
-    min_wdw_sz = (64, 64)
-    step_size = (10, 10)
-    downscale = 1.25
-    visualize_det = True
+    min_wdw_sz = get_sliding_window_sz()
 
-    im = cv2.imread('test-1.pgm')
+    im = cv2.imread(test_image)
     im = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)
     original_image = im.copy()
 
     # Load the classifier
-    print(model_path)
-    clf = pickle.load(open(model_path, 'rb'))
+    print(model_file)
+    clf = pickle.load(open(model_file, 'rb'))
 
     # List to store the detections
     detections = []
@@ -61,8 +57,8 @@ if __name__ == "__main__":
             if im_window.shape[0] != min_wdw_sz[1] or im_window.shape[1] != min_wdw_sz[0]:
                 continue
             # Calculate the HOG features    
-            fd = hog(im_window, orientations=9, pixels_per_cell=(16,16), 
-                cells_per_block=(3, 3), visualise=False)
+            fd = hog(im_window, orientations=orientations, pixels_per_cell=pixels_per_cell, 
+                cells_per_block=cells_per_block, visualise=False)
             fd = fd.reshape(1, -1)
 
             pred = clf.predict(fd)
@@ -98,7 +94,7 @@ if __name__ == "__main__":
     cv2.waitKey()
 
     # Perform Non Maxima Suppression
-    detections = nms(detections, 0.1)
+    detections = nms(detections, threshold)
 
     # Display the results after performing NMS
     for (x_tl, y_tl, _, w, h) in detections:

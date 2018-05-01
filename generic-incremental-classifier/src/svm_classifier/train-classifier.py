@@ -8,12 +8,9 @@ import joblib
 import numpy as np
 from sklearn import svm
 import pickle
+from config import *
 
 if __name__ == "__main__":
-    pos_feat_dir = 'positive_features/'
-    neg_feat_dir = 'negative_features/'
-
-    model_path = 'linear_svc_model/'
 
     fds = []
     labels = []

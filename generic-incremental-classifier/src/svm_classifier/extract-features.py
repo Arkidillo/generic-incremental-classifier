@@ -4,15 +4,10 @@ import glob
 import os
 import joblib
 from skimage.feature import hog
+from config import *
 
-pos_im_path = 'positive_images/'
-neg_im_path = 'negative_images/'
-
-pos_feat_dir = 'positive_features/'
-neg_feat_dir = 'negative_features/'
-
-scale_size = (64, 64)
-
+scale_size = get_sliding_window_sz()
+print(scale_size)
 
 # If feature directories don't exist, create them
 if not os.path.isdir(pos_feat_dir):
@@ -32,8 +27,8 @@ for im_path in glob.glob(os.path.join(pos_im_path, "*")):
 
 	resize_im = cv2.resize(gray_im, scale_size)
 	# Resize the image
-	fd = hog(resize_im, orientations=9, pixels_per_cell=(16,16), 
-		cells_per_block=(3, 3), visualise=False)
+	fd = hog(resize_im, orientations=orientations, pixels_per_cell=pixels_per_cell, 
+		cells_per_block=cells_per_block, visualise=False)
 
 	# Save features
 	fd_name = os.path.split(im_path)[1].split(".")[0] + ".feat"
@@ -50,8 +45,8 @@ for im_path in glob.glob(os.path.join(neg_im_path, "*")):
 
 	resize_im = cv2.resize(gray_im, scale_size)
 
-	fd = hog(resize_im, orientations=9, pixels_per_cell=(16,16), 
-		cells_per_block=(3, 3), visualise=False)
+	fd = hog(resize_im, orientations=orientations, pixels_per_cell=pixels_per_cell, 
+		cells_per_block=cells_per_block, visualise=False)
 
 	fd_name = os.path.split(im_path)[1].split(".")[0] + ".feat"
 	fd_path = os.path.join(neg_feat_dir, fd_name)
