@@ -1,12 +1,4 @@
 # Directories
-
-
-# set to true if running from .sh
-running_from_sh = True
-
-# path relative to the .sh file
-this_dir = 'src/svm_classifier/'
-
 pos_im_path = 'positive_images/'
 neg_im_path = 'negative_images/'
 
@@ -15,15 +7,6 @@ neg_feat_dir = 'negative_features/'
 
 model_path = 'linear_svc_model/'
 model_file = 'linear_svc_model/trained_svm.clf'
-
-# appends the 
-if (running_from_sh):
-	pos_im_path = this_dir + pos_im_path
-	neg_im_path = this_dir + neg_im_path
-	pos_feat_dir = this_dir + pos_feat_dir
-	neg_feat_dir = this_dir + neg_feat_dir
-	model_path = this_dir + model_path
-	model_file = this_dir + model_file
 
 # Hog parameters
 orientations = 9
@@ -35,8 +18,6 @@ threshold = 0.1
 
 # Test classifier
 test_image = 'test-1.pgm'
-if (running_from_sh):
-	test_image = this_dir + test_image
 step_size = (10, 10)
 downscale = 1.25
 visualize_det = True
