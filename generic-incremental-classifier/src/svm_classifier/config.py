@@ -7,8 +7,8 @@ running_from_sh = True
 # path relative to the .sh file
 this_dir = 'src/svm_classifier/'
 
-pos_im_path = 'positive_images/'
-neg_im_path = 'negative_images/'
+pos_im_path = '../../positive_images/'
+neg_im_path = '../../negative_images/'
 
 pos_feat_dir = 'positive_features/'
 neg_feat_dir = 'negative_features/'
@@ -16,7 +16,7 @@ neg_feat_dir = 'negative_features/'
 model_path = 'linear_svc_model/'
 model_file = 'linear_svc_model/trained_svm.clf'
 
-# appends the 
+# appends the
 if (running_from_sh):
 	pos_im_path = this_dir + pos_im_path
 	neg_im_path = this_dir + neg_im_path
