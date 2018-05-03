@@ -13,6 +13,8 @@ public class ImageHandler {
 
     // folder that our images will be stored in
     public static final File IMAGE_FOLDER = new File("./images/");
+    public static final File CURR_TEST_BATCH_FOLDER = new File("./test_images");
+
     private static final String POSITIVE_IMAGES_FOLDER = "./positive_images/";
     private static final String NEGATIVE_IMAGES_FOLDER = "./negative_images/";
 
@@ -118,9 +120,9 @@ public class ImageHandler {
         return image.getSubimage(label.getX(), label.getY(), label.getWidth(), label.getHeight());
     }
 
-    // return next image in the 'images' folder.
-    public static BufferedImage loadNextImage() {
-        File[] listOfFiles = IMAGE_FOLDER.listFiles();
+    // return next image in the given folder.
+    public static BufferedImage loadNextImage(File folder) {
+        File[] listOfFiles = folder.listFiles();
 
         // ensure the folder exists
         if (listOfFiles == null || listOfFiles.length == 0) {
@@ -141,8 +143,8 @@ public class ImageHandler {
     }
 
     // return next image in the 'images' folder.
-    public static BufferedImage loadPrevImage() {
-        File[] listOfFiles = IMAGE_FOLDER.listFiles();
+    public static BufferedImage loadPrevImage(File folder) {
+        File[] listOfFiles = folder.listFiles();
 
         // ensure the folder exists
         if (listOfFiles == null) {

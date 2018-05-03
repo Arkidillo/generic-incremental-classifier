@@ -36,8 +36,8 @@ public class LabelsReader {
                     oldFilename = filename;
                 }
 
-                newLabel.setTop(y + height);
-                newLabel.setBottom(y);
+                newLabel.setTop(y);
+                newLabel.setBottom(y - height);
                 newLabel.setRight(x + width);
                 newLabel.setLeft(x);
 

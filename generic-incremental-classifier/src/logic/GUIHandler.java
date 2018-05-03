@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class GUIHandler implements ActionListener{
     private OurFrame frame;
@@ -33,9 +34,9 @@ public class GUIHandler implements ActionListener{
     }
 
     // add the next image in the folder to the screen (pane)
-    public void loadNextImage() {
+    public void loadNextImage(File folder) {
         // create + set the image
-        BufferedImage image = ImageHandler.loadNextImage();
+        BufferedImage image = ImageHandler.loadNextImage(folder);
         imagePane.setImage(image, ImageHandler.getCurrentFileName());
 
         // repaint is necessary to show
@@ -46,9 +47,9 @@ public class GUIHandler implements ActionListener{
         frame.repaint();
     }
 
-    public void loadPrevImage() {
+    public void loadPrevImage(File folder) {
         // create + set the image
-        BufferedImage image = ImageHandler.loadPrevImage();
+        BufferedImage image = ImageHandler.loadPrevImage(folder);
         imagePane.setImage(image, ImageHandler.getCurrentFileName());
 
         // repaint is necessary to show

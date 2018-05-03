@@ -108,7 +108,7 @@ if __name__ == "__main__":
             #clone = cv2.resize(clone, (512, 512))
             cv2.rectangle(clone, (x_tl, y_tl), (x_tl+w,y_tl+h), (0, 0, 0), thickness=2)
             # Output rectangle tuple (x, y, width, height) to json
-            rects.append((x_tl, y_tl, w, h,im_path))
+            rects.append((x_tl, y_tl, w, h, im_path[18:]))
 
         cv2.imshow("Final Detections after applying NMS", clone)
         if show_final_det:

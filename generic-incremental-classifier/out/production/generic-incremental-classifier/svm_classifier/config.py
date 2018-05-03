@@ -1,5 +1,6 @@
 # Directories
 
+import os
 
 # set to true if running from .sh
 running_from_sh = False
@@ -9,6 +10,8 @@ this_dir = 'src/svm_classifier/'
 
 pos_im_path = 'positive_images/'
 neg_im_path = 'negative_images/'
+pos_im_path = os.path.join('..', os.path.join('..', pos_im_path))
+neg_im_path = os.path.join('..', os.path.join('..', neg_im_path))
 
 pos_feat_dir = 'positive_features/'
 neg_feat_dir = 'negative_features/'
@@ -18,7 +21,7 @@ model_file = 'linear_svc_model/trained_svm.clf'
 
 labels_csv = 'labels.csv'
 
-# appends the 
+# appends the
 if (running_from_sh):
 	pos_im_path = this_dir + pos_im_path
 	neg_im_path = this_dir + neg_im_path
@@ -37,12 +40,14 @@ cells_per_block = (3, 3)
 threshold = 0.1
 
 # Test classifier
-test_image = 'test-1.pgm'
+test_im_dir = 'test_images/'
+test_im_dir = os.path.join('..', os.path.join('..', test_im_dir))
 if (running_from_sh):
-	test_image = this_dir + test_image
+	test_im_dir = this_dir + test_im_dir
 step_size = (10, 10)
 downscale = 1.25
 visualize_det = False
+show_final_det = False
 
 
 import glob

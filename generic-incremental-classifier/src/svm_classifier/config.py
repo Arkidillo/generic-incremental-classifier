@@ -10,10 +10,8 @@ this_dir = 'src/svm_classifier/'
 
 pos_im_path = 'positive_images/'
 neg_im_path = 'negative_images/'
-os.path.join('../', pos_im_path)
-os.path.join('../', pos_im_path)
-os.path.join('../', neg_im_path)
-os.path.join('../', neg_im_path)
+pos_im_path = os.path.join('..', os.path.join('..', pos_im_path))
+neg_im_path = os.path.join('..', os.path.join('..', neg_im_path))
 
 pos_feat_dir = 'positive_features/'
 neg_feat_dir = 'negative_features/'
@@ -43,8 +41,7 @@ threshold = 0.1
 
 # Test classifier
 test_im_dir = 'test_images/'
-os.path.join('../', test_im_dir)
-os.path.join('../', test_im_dir)
+test_im_dir = os.path.join('..', os.path.join('..', test_im_dir))
 if (running_from_sh):
 	test_im_dir = this_dir + test_im_dir
 step_size = (10, 10)
@@ -63,8 +60,6 @@ def get_sliding_window_sz():
 	x_dim = []
 	y_dim = []
 	for im_path in glob.glob(os.path.join(pos_im_path, "*")):
-
-		print(im_path)
 
 		# Read image and convert to grayscale
 		im = cv2.imread(im_path)

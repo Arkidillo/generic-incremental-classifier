@@ -1,6 +1,7 @@
 package logic;
 
 import gui.buttons.ButtonIDs;
+import util.ImageHandler;
 import util.Utils;
 
 public class TrainingHandler {
@@ -11,13 +12,13 @@ public class TrainingHandler {
     }
 
     public void train() {
-        guiHandler.loadNextImage();
+        guiHandler.loadNextImage(ImageHandler.IMAGE_FOLDER);
         while(true /* How many time do we want this to train? */) {
             boolean next = labelThisImage();
             if (next) {
-                guiHandler.loadNextImage();
+                guiHandler.loadNextImage(ImageHandler.IMAGE_FOLDER);
             } else {
-                guiHandler.loadPrevImage();
+                guiHandler.loadPrevImage(ImageHandler.IMAGE_FOLDER);
             }
         }
     }
