@@ -2,14 +2,13 @@ package logic;
 
 import com.google.gson.Gson;
 import gui.Label;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import util.ImageHandler;
 import util.Utils;
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,6 +22,7 @@ public class SaveImagesHandler {
         // Make sure the folder is cleared
         createFolders();
         clearFolders();
+
 
         // For each image/ entry in hashmap, save a JSON
         Iterator it = allLabels.entrySet().iterator();

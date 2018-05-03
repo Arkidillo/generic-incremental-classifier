@@ -9,13 +9,23 @@ from config import *
 scale_size = get_sliding_window_sz()
 print(scale_size)
 
-# If feature directories don't exist, create them
+# If feature directories don't exist, create them, else clear it
 if not os.path.isdir(pos_feat_dir):
     os.makedirs(pos_feat_dir)
+else:
+	for f in os.listdir(pos_feat_dir):
+		file_path = os.path.join(pos_feat_dir, f)
+		print('removing', file_path)
+		os.unlink(file_path)
 
-# If feature directories don't exist, create them
 if not os.path.isdir(neg_feat_dir):
     os.makedirs(neg_feat_dir)
+else:
+	for f in os.listdir(neg_feat_dir):
+		file_path = os.path.join(neg_feat_dir, f)
+		print('removing', file_path)
+		os.unlink(file_path)
+
 
 print("Calculating the descriptors for the positive samples and saving them")
 for im_path in glob.glob(os.path.join(pos_im_path, "*")):

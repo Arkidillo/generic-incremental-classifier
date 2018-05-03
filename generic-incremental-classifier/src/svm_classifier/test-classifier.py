@@ -7,6 +7,8 @@ import cv2
 from nms import nms
 import pickle
 from config import *
+import json
+import pandas as pd
 
 def sliding_window(image, window_size, step_size):
     '''
@@ -97,9 +99,17 @@ if __name__ == "__main__":
     detections = nms(detections, threshold)
 
     # Display the results after performing NMS
+    rects = []
     for (x_tl, y_tl, _, w, h) in detections:
         # Draw the detections
         #clone = cv2.resize(clone, (512, 512))
         cv2.rectangle(clone, (x_tl, y_tl), (x_tl+w,y_tl+h), (0, 0, 0), thickness=2)
+        # Output rectangle tuple (x, y, width, height) to json
+        rects.append((x_tl, y_tl, w, h))
+        rects.append(test_image)
+
+    df = pd.DataFrame(rects)
+    df.to_csv(labels_csv, header=False, index=False)
+
     cv2.imshow("Final Detections after applying NMS", clone)
     cv2.waitKey()

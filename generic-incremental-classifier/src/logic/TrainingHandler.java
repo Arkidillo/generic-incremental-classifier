@@ -11,6 +11,7 @@ public class TrainingHandler {
     }
 
     public void train() {
+        guiHandler.loadNextImage();
         while(true /* How many time do we want this to train? */) {
             boolean next = labelThisImage();
             if (next) {
