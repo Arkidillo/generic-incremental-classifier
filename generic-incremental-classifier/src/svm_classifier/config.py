@@ -42,12 +42,15 @@ cells_per_block = (3, 3)
 threshold = 0.1
 
 # Test classifier
-test_image = 'test-1.pgm'
+test_im_dir = 'test_images/'
+os.path.join('../', test_im_dir)
+os.path.join('../', test_im_dir)
 if (running_from_sh):
-	test_image = this_dir + test_image
+	test_im_dir = this_dir + test_im_dir
 step_size = (10, 10)
 downscale = 1.25
 visualize_det = False
+show_final_det = False
 
 
 import glob
