@@ -21,7 +21,7 @@ public class SaveImagesHandler {
     public static void saveAllImages(HashMap<String, ArrayList<Label>> allLabels) {
         // Make sure the folder is cleared
         createFolders();
-        clearFolders();
+        //clearFolders();
 
 
         // For each image/ entry in hashmap, save a JSON
@@ -53,6 +53,7 @@ public class SaveImagesHandler {
     }
 
     public static void clearFolders() {
+        System.err.println("DELETING");
         File[] files;
         files = new File(POSITIVE_IMAGES_FOLDER).listFiles();
         if (files != null) { //some JVMs return null for empty dirs
