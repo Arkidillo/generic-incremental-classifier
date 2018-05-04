@@ -30,8 +30,12 @@ public class UserCorrectionHandler {
             boolean next = labelThisImage();
             if (next) {
                 guiHandler.loadNextImage(ImageHandler.CURR_TEST_BATCH_FOLDER);
+                imageFileName = ImageHandler.getCurrentFileName();
+                placeLabelsForImage(labelsForFile, imageFileName);
             } else {
                 guiHandler.loadPrevImage(ImageHandler.CURR_TEST_BATCH_FOLDER);
+                imageFileName = ImageHandler.getCurrentFileName();
+                placeLabelsForImage(labelsForFile, imageFileName);
             }
         }
     }
