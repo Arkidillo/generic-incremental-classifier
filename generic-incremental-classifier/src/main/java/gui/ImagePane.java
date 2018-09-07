@@ -1,6 +1,5 @@
 package gui;
 
-import com.google.gson.Gson;
 import logic.LabelPlaceHandler;
 
 import javax.swing.*;
@@ -13,6 +12,7 @@ import java.util.HashMap;
 public class ImagePane extends JLayeredPane {
 
     private HashMap<String, ArrayList<Label>> labels = new HashMap<>();
+    private HashMap<String, Point> imageSizes = new HashMap<>();
     private BufferedImage image;
     private String currentFileName;
 
@@ -23,13 +23,18 @@ public class ImagePane extends JLayeredPane {
     public HashMap<String, ArrayList<Label>> getLabels() {
         return labels;
     }
+    public HashMap<String, Point> getImageSizes() {
+        return imageSizes;
+    }
 
     public void setImage(BufferedImage image, String fileName) {
         this.image = image;
         this.currentFileName = fileName;
         // Create a new arrayList for the labels in this picture as soon as the image is set
-        if (!labels.containsKey(currentFileName))
+        if (!labels.containsKey(currentFileName)) {
             labels.put(currentFileName, new ArrayList<>());
+            imageSizes.put(currentFileName, new Point(image.getWidth(), image.getHeight()));
+        }
     }
 
     public BufferedImage getImage() {

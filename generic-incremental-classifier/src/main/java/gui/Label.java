@@ -57,4 +57,16 @@ public class Label {
                 y < topLeft.getY() + height;
     }
 
+    public int getCartesianLeftX() {
+        return getX();
+    }
+    public int getCartesianRightX() {
+        return getX() + getWidth();
+    }
+    public int getCartesianBottomY(int imageHeight) {
+        return imageHeight - (getY() + getHeight());
+    }
+    public int getCartesianTopY(int imageHeight) {
+        return imageHeight - getY();
+    }
 }

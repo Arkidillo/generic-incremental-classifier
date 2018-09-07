@@ -35,8 +35,9 @@ public class ImageHandler {
     public static BufferedImage loadImage(String fileName){
         BufferedImage image = null;
         try {
-            image = ImageIO.read(new File("./images/" + fileName));
+            image = ImageIO.read(new File(IMAGE_FOLDER + fileName));
         } catch (IOException e) {
+            System.out.println("Couldn't read file: " + fileName);
             e.printStackTrace();
         }
 
@@ -123,6 +124,7 @@ public class ImageHandler {
     // return next image in the given folder.
     public static BufferedImage loadNextImage(File folder) {
         File[] listOfFiles = folder.listFiles();
+        System.out.println("Next image path: " + folder.getAbsolutePath());
 
         // ensure the folder exists
         if (listOfFiles == null || listOfFiles.length == 0) {
