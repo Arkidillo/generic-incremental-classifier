@@ -1,5 +1,7 @@
 # Import the required modules
+from keras.preprocessing.image import img_to_array
 from skimage.transform.pyramids import pyramid_gaussian
+from keras.models import load_model
 from imageio import imread
 from skimage.feature import hog
 from sklearn.externals import joblib
@@ -31,7 +33,7 @@ def sliding_window(image, window_size, step_size):
 
 if __name__ == "__main__":
 
-    min_wdw_sz = get_sliding_window_sz()
+    min_wdw_sz = scale_size
     rects = []
 
     # Iterate through test_images folder
@@ -39,12 +41,11 @@ if __name__ == "__main__":
         print("Testing classifier on file: ", im_path)
 
         im = cv2.imread(im_path)
-        im = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)
         original_image = im.copy()
 
         # Load the classifier
         print(model_file)
-        clf = pickle.load(open(model_file, 'rb'))
+        net = load_model("model.net")
 
         # List to store the detections
         detections = []
@@ -66,11 +67,13 @@ if __name__ == "__main__":
                     cells_per_block=cells_per_block, visualise=False)
                 fd = fd.reshape(1, -1)
 
-                pred = clf.predict(fd)
+                im_arr = img_to_array(im_window)
+
+                pred = net.predict(fd)[1]
                 if pred == 1:
                     print("Detection:: Location -> ({}, {})".format(x, y))
-                    print("Scale ->  {} | Confidence Score {} \n".format(scale,clf.decision_function(fd)))
-                    detections.append((x, y, clf.decision_function(fd),
+                    print("Scale ->  {} | Confidence Score {} \n".format(scale))
+                    detections.append((x, y,
                         int(min_wdw_sz[0]*(downscale**scale)),
                         int(min_wdw_sz[1]*(downscale**scale))))
                     cd.append(detections[-1])
@@ -99,7 +102,7 @@ if __name__ == "__main__":
         # cv2.waitKey()
 
         # Perform Non Maxima Suppression
-        detections = nms(detections, threshold)
+        #detections = nms(detections, threshold)
 
         # Display the results after performing NMS
 
