@@ -1,7 +1,6 @@
 # Import the required modules
-from skimage.feature import local_binary_pattern
-from sklearn.svm import LinearSVC
-from sklearn.linear_model import LogisticRegression
+from keras.preprocessing.image import img_to_array
+from keras.preprocessing.image import ImageDataGenerator
 import glob
 import os
 import joblib
@@ -9,34 +8,61 @@ import numpy as np
 from sklearn import svm
 import pickle
 from config import *
+import random
+from keras.optimizers import Adam
+from model import *
 
 if __name__ == "__main__":
 
-    fds = []
-    labels = []
-    # Load the positive features
-    for feat_path in glob.glob(os.path.join(pos_feat_dir,"*.feat")):
-        print("Working on positive image:", feat_path)
-        fd = joblib.load(feat_path)
-        fds.append(fd)
-        labels.append(1)
+	ims_labels = []
+	ims = []
+	labels = []
 
-    # Load the negative features
-    for feat_path in glob.glob(os.path.join(neg_feat_dir,"*.feat")):
-        fd = joblib.load(feat_path)
-        fds.append(fd)
-        labels.append(0)
+	# instead of hog features - use pixel intensities
+	# Load the positive features
+	for pos_im in glob.glob(os.path.join(pos_im_path,"*")):
+		print("Working on positive image:", pos_im)
+		# Read image and convert to grayscale
+		im = cv2.imread(pos_im)
+		im = cv2.resize(im, scale_size)
+		im = img_to_array(im)
+		ims_labels.append([im, 1])
 
-    fds_arr = np.asarray(fds)
-    labels_arr = np.asarray(labels)
+	# Load the negative features
+	for neg_im in glob.glob(os.path.join(neg_im_path,"*")):
+		im = cv2.imread(neg_im)
+		im = cv2.resize(im, scale_size)
+		im = img_to_array(im)
+		ims_labels.append([im, 0])
 
-    clf = svm.SVC(gamma = 0.001, C=100)
-    print("Training a Linear SVM Classifier")
-    clf.fit(fds_arr, labels_arr)
-    # If feature directories don't exist, create them
-    if not os.path.isdir(model_path):
-        os.makedirs(model_path)
+	ims_labels = np.array(ims_labels)
+	np.random.shuffle(ims_labels)
 
-    model_path = os.path.join(model_path, 'trained_svm.clf')
-    pickle.dump(clf, open(model_path, 'wb'))
-    print("Classifier saved to {}".format(model_path))
+	# Un-tuple the images from their labels
+	ims = ims_labels[:, 0]
+	labels = ims_labels[:, 1]
+
+	print(type(ims[0]))
+	print(type(labels))
+
+	# Create ImageDataGenerator
+	aug = ImageDataGenerator(rotation_range=rotation_range, width_shift_range=width_shift_range,
+							 height_shift_range=height_shift_range, shear_range=shear_range, zoom_range=zoom_range,
+							 horizontal_flip=horizontal_flip, fill_mode=fill_mode)
+
+	# Setup model
+	net = Net.build(width=scale_size[0], height=scale_size[1], depth=3, classes=1)
+	opt = Adam(lr=init_lr, decay=init_lr / epochs)
+	net.compile(loss="binary_crossentropy", optimizer=opt)
+	
+	# Train
+	print("Training a Linear SVM Classifier")
+	net.fit_generator(aug.flow(x=ims, y=labels, batch_size=bs), epochs=epochs)
+
+	# If feature directories don't exist, create them
+	if not os.path.isdir(model_path):
+	    os.makedirs(model_path)
+
+	model_path = os.path.join(model_path, 'trained_net.clf')
+	pickle.dump(net, open(model_path, 'wb'))
+	print("Classifier saved to {}".format(model_path))

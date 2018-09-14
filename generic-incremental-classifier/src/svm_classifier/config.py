@@ -23,6 +23,21 @@ labels_csv = 'labels.csv'
 orientations = 9
 pixels_per_cell = (4, 4)
 cells_per_block = (3, 3)
+scale_size = (28, 28)
+
+# Image Data Gen config
+rotation_range=30
+width_shift_range=0.1
+height_shift_range=0.1
+shear_range=0.2
+zoom_range=0.2
+horizontal_flip=True
+fill_mode="nearest"
+
+# Net config
+epochs = 5
+init_lr = 1e-3
+bs = 32
 
 # NMS
 threshold = 0.1
