@@ -1,11 +1,11 @@
 # Import the required modules
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import ImageDataGenerator
+from keras.utils import to_categorical
 import glob
 import os
 import joblib
 import numpy as np
-from sklearn import svm
 import pickle
 from config import *
 import random
@@ -42,8 +42,13 @@ if __name__ == "__main__":
 	ims = ims_labels[:, 0]
 	labels = ims_labels[:, 1]
 
+	ims = ims / 255.0
+
+	labels = to_categorical(labels, num_classes=2)
 	ims_list = ims.tolist()
 	labels_list = labels.tolist()
+
+
 
 	# Create ImageDataGenerator
 	aug = ImageDataGenerator(rotation_range=rotation_range, width_shift_range=width_shift_range,
@@ -51,21 +56,21 @@ if __name__ == "__main__":
 							 horizontal_flip=horizontal_flip, fill_mode=fill_mode)
 
 	# Setup model
-	net = Net.build(width=scale_size[0], height=scale_size[1], depth=3, classes=1)
+	net = Net.build(width=scale_size[0], height=scale_size[1], depth=3, classes=2)
 	opt = Adam(lr=init_lr, decay=init_lr / epochs)
 	net.compile(loss="binary_crossentropy", optimizer=opt)
-	
+
 	# Train
 	print("Training a Linear SVM Classifier")
-	#net.fit_generator(aug.flow(x=np.asarray(ims_list), y=labels, batch_size=bs), epochs=epochs)
-	net.fit(x=np.asarray(ims_list), y=labels)
+	net.fit_generator(aug.flow(x=np.asarray(ims_list), y=labels, batch_size=bs), steps_per_epoch=len(ims) // bs, epochs=epochs)
+	# net.fit(x=np.asarray(ims_list), y=labels)
 
 	# If feature directories don't exist, create them
 	if not os.path.isdir(model_path):
 	    os.makedirs(model_path)
 
 
-	im = cv2.imread("testimg.jpg")
+	im = cv2.imread("mac.jpeg")
 	im = cv2.resize(im, scale_size)
 	im = img_to_array(im)
 	im = np.expand_dims(im, axis=0)
@@ -73,7 +78,7 @@ if __name__ == "__main__":
 	print(net.predict(np.asarray(im.tolist())))
 
 
-	im = cv2.imread("green.jpg")
+	im = cv2.imread("eagle.jpg")
 	im = cv2.resize(im, scale_size)
 	im = img_to_array(im)
 	im = np.expand_dims(im, axis=0)
