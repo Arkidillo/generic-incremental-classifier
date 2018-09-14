@@ -99,7 +99,7 @@ public class GUIHandler implements ActionListener{
             //new GsonHandler(imagePane.getLabels());
 
             // Crop all images to their labels, and save.
-            SaveImagesHandler.saveAllImages(imagePane.getLabels(), imagePane.getImageSizes());
+            SaveImagesHandler.saveAllImages(imagePane.getLabels());
         }
     }
 }
