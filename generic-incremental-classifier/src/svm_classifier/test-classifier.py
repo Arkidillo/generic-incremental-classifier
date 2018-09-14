@@ -2,14 +2,12 @@
 from keras.preprocessing.image import img_to_array
 from skimage.transform.pyramids import pyramid_gaussian
 from keras.models import load_model
-from imageio import imread
-from skimage.feature import hog
-from sklearn.externals import joblib
 import cv2
 from nms import nms
 import pickle
 from config import *
 import pandas as pd
+import numpy as np
 
 def sliding_window(image, window_size, step_size):
     '''
@@ -62,17 +60,20 @@ if __name__ == "__main__":
             for (x, y, im_window) in sliding_window(im, min_wdw_sz, step_size):
                 if im_window.shape[0] != min_wdw_sz[1] or im_window.shape[1] != min_wdw_sz[0]:
                     continue
-                # Calculate the HOG features
-                fd = hog(im_window, orientations=orientations, pixels_per_cell=pixels_per_cell,
-                    cells_per_block=cells_per_block, visualise=False)
-                fd = fd.reshape(1, -1)
+                # # Calculate the HOG features
+                # fd = hog(im_window, orientations=orientations, pixels_per_cell=pixels_per_cell,
+                #     cells_per_block=cells_per_block, visualise=False)
+                # fd = fd.reshape(1, -1)
 
                 im_arr = img_to_array(im_window)
+                im_arr = np.expand_dims(im_arr, axis=0)
+                im_arr = np.asarray(im_arr.tolist())
 
-                pred = net.predict(fd)[1]
+                # print(net.predict(im_arr))
+                pred = net.predict(im_arr)[0,1]
                 if pred == 1:
                     print("Detection:: Location -> ({}, {})".format(x, y))
-                    print("Scale ->  {} | Confidence Score {} \n".format(scale))
+                    print("Scale ->  {} | Confidence Score \n".format(scale))
                     detections.append((x, y,
                         int(min_wdw_sz[0]*(downscale**scale)),
                         int(min_wdw_sz[1]*(downscale**scale))))
@@ -81,7 +82,7 @@ if __name__ == "__main__":
                 # of the sliding window
                 if visualize_det:
                     clone = im.copy()
-                    for x1, y1, _, _, _  in cd:
+                    for x1, y1, _, _  in cd:
                         # Draw the detections at this scale
                         cv2.rectangle(clone, (x1, y1), (x1 + im_window.shape[1], y1 +
                             im_window.shape[0]), (0, 0, 0), thickness=2)
@@ -95,7 +96,7 @@ if __name__ == "__main__":
 
         # Display the results before performing NMS
         clone = original_image.copy()
-        for (x_tl, y_tl, _, w, h) in detections:
+        for (x_tl, y_tl, w, h) in detections:
             # Draw the detections
             cv2.rectangle(im, (x_tl, y_tl), (x_tl+w, y_tl+h), (0, 0, 0), thickness=2)
         # cv2.imshow("Raw Detections before NMS", im)
@@ -106,7 +107,7 @@ if __name__ == "__main__":
 
         # Display the results after performing NMS
 
-        for (x_tl, y_tl, _, w, h) in detections:
+        for (x_tl, y_tl, w, h) in detections:
             # Draw the detections
             #clone = cv2.resize(clone, (512, 512))
             cv2.rectangle(clone, (x_tl, y_tl), (x_tl+w,y_tl+h), (0, 0, 0), thickness=2)

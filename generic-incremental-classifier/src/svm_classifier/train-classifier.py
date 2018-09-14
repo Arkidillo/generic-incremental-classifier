@@ -61,7 +61,7 @@ if __name__ == "__main__":
 	net.compile(loss="binary_crossentropy", optimizer=opt)
 
 	# Train
-	print("Training a Linear SVM Classifier")
+	# print("Training a Linear SVM Classifier")
 	net.fit_generator(aug.flow(x=np.asarray(ims_list), y=labels, batch_size=bs), steps_per_epoch=len(ims) // bs, epochs=epochs)
 	# net.fit(x=np.asarray(ims_list), y=labels)
 
@@ -70,20 +70,20 @@ if __name__ == "__main__":
 	    os.makedirs(model_path)
 
 
-	im = cv2.imread("mac.jpeg")
-	im = cv2.resize(im, scale_size)
-	im = img_to_array(im)
-	im = np.expand_dims(im, axis=0)
-
-	print(net.predict(np.asarray(im.tolist())))
-
-
-	im = cv2.imread("eagle.jpg")
-	im = cv2.resize(im, scale_size)
-	im = img_to_array(im)
-	im = np.expand_dims(im, axis=0)
-
-	print(net.predict(np.asarray(im.tolist())))
+	# im = cv2.imread("mac.jpeg")
+	# im = cv2.resize(im, scale_size)
+	# im = img_to_array(im)
+	# im = np.expand_dims(im, axis=0)
+	#
+	# print(net.predict(np.asarray(im.tolist())))
+	#
+	#
+	# im = cv2.imread("eagle.jpg")
+	# im = cv2.resize(im, scale_size)
+	# im = img_to_array(im)
+	# im = np.expand_dims(im, axis=0)
+	#
+	# print(net.predict(np.asarray(im.tolist())))
 
 	# Save model
 	net.save("model.net")
