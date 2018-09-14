@@ -35,8 +35,8 @@ horizontal_flip=True
 fill_mode="nearest"
 
 # Net config
-epochs = 5
-init_lr = 1e-3
+epochs = 100
+init_lr = 1e-1
 bs = 32
 
 # NMS

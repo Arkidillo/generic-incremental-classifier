@@ -42,8 +42,8 @@ if __name__ == "__main__":
 	ims = ims_labels[:, 0]
 	labels = ims_labels[:, 1]
 
-	print(type(ims[0]))
-	print(type(labels))
+	ims_list = ims.tolist()
+	labels_list = labels.tolist()
 
 	# Create ImageDataGenerator
 	aug = ImageDataGenerator(rotation_range=rotation_range, width_shift_range=width_shift_range,
@@ -57,12 +57,28 @@ if __name__ == "__main__":
 	
 	# Train
 	print("Training a Linear SVM Classifier")
-	net.fit_generator(aug.flow(x=ims, y=labels, batch_size=bs), epochs=epochs)
+	#net.fit_generator(aug.flow(x=np.asarray(ims_list), y=labels, batch_size=bs), epochs=epochs)
+	net.fit(x=np.asarray(ims_list), y=labels)
 
 	# If feature directories don't exist, create them
 	if not os.path.isdir(model_path):
 	    os.makedirs(model_path)
 
-	model_path = os.path.join(model_path, 'trained_net.clf')
-	pickle.dump(net, open(model_path, 'wb'))
-	print("Classifier saved to {}".format(model_path))
+
+	im = cv2.imread("testimg.jpg")
+	im = cv2.resize(im, scale_size)
+	im = img_to_array(im)
+	im = np.expand_dims(im, axis=0)
+
+	print(net.predict(np.asarray(im.tolist())))
+
+
+	im = cv2.imread("green.jpg")
+	im = cv2.resize(im, scale_size)
+	im = img_to_array(im)
+	im = np.expand_dims(im, axis=0)
+
+	print(net.predict(np.asarray(im.tolist())))
+
+	# Save model
+	net.save("model.net")
