@@ -8,6 +8,10 @@ running_from_sh = True
 # path relative to the .sh file
 this_dir = 'src/svm_classifier/'
 
+im_path = 'images/'
+
+initial_train_images_path = 'initial_train_images/'
+
 pos_im_path = 'positive_images/'
 neg_im_path = 'negative_images/'
 
@@ -19,11 +23,14 @@ model_file = 'linear_svc_model/trained_svm.clf'
 
 labels_csv = 'labels.csv'
 
+# Iterations
+iterations = 2
+
 # Hog parameters
 orientations = 9
 pixels_per_cell = (4, 4)
 cells_per_block = (3, 3)
-scale_size = (48, 48)
+scale_size = (64, 64)
 
 # Image Data Gen config
 rotation_range=30
@@ -37,7 +44,7 @@ fill_mode="nearest"
 # Net config
 epochs = 10
 init_lr = 1e-3
-bs = 32
+bs = 9
 
 # NMS
 threshold = 0.1
@@ -60,6 +67,8 @@ else:
 	pos_im_path = os.path.join('..', os.path.join('..', pos_im_path))
 	neg_im_path = os.path.join('..', os.path.join('..', neg_im_path))
 	test_im_dir = os.path.join('..', os.path.join('..', test_im_dir))
+	im_path = os.path.join('..', os.path.join('..', im_path))
+	initial_train_images_path = os.path.join('..', os.path.join('..', initial_train_images_path))
 
 import glob
 import os
