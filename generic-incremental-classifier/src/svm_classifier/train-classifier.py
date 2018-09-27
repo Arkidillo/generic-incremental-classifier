@@ -2,6 +2,7 @@
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import ImageDataGenerator
 from keras.utils import to_categorical
+from keras.models import load_model
 import glob
 import os
 import joblib
@@ -55,8 +56,12 @@ if __name__ == "__main__":
 							 height_shift_range=height_shift_range, shear_range=shear_range, zoom_range=zoom_range,
 							 horizontal_flip=horizontal_flip, fill_mode=fill_mode)
 
-	# Setup model
-	net = Net.build(width=scale_size[0], height=scale_size[1], depth=3, classes=2)
+	# Setup or Load model
+	try:
+		net = load_model("model.net")
+	except:
+		net = Net.build(width=scale_size[0], height=scale_size[1], depth=3, classes=2)
+	
 	opt = Adam(lr=init_lr, decay=init_lr / epochs)
 	net.compile(loss="binary_crossentropy", optimizer=opt)
 
