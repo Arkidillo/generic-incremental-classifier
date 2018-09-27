@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ImageHandler {
 
     // folder that our images will be stored in
-    public static final File IMAGE_FOLDER = new File("./images/");
+    public static final File IMAGE_FOLDER = new File("./initial_train_images/");
     public static final File CURR_TEST_BATCH_FOLDER = new File("./test_images");
 
     private static final String POSITIVE_IMAGES_FOLDER = "./positive_images/";
