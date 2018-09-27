@@ -23,7 +23,7 @@ labels_csv = 'labels.csv'
 orientations = 9
 pixels_per_cell = (4, 4)
 cells_per_block = (3, 3)
-scale_size = (28, 28)
+scale_size = (48, 48)
 
 # Image Data Gen config
 rotation_range=30
@@ -35,7 +35,7 @@ horizontal_flip=True
 fill_mode="nearest"
 
 # Net config
-epochs = 25
+epochs = 10
 init_lr = 1e-3
 bs = 32
 

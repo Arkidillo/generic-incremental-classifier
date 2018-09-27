@@ -70,10 +70,11 @@ if __name__ == "__main__":
                 im_arr = np.asarray(im_arr.tolist())
 
                 # print(net.predict(im_arr))
-                pred = net.predict(im_arr)[0,1]
-                if pred == 1:
+                pred = net.predict_proba(im_arr)[0,1]
+                if pred == 1.0:
+                # if pred == 1:
                     print("Detection:: Location -> ({}, {})".format(x, y))
-                    print("Scale ->  {} | Confidence Score \n".format(scale))
+                    print("Scale ->  {} | Confidence Score {} \n".format(scale, pred))
                     detections.append((x, y,
                         int(min_wdw_sz[0]*(downscale**scale)),
                         int(min_wdw_sz[1]*(downscale**scale))))
@@ -103,7 +104,7 @@ if __name__ == "__main__":
         # cv2.waitKey()
 
         # Perform Non Maxima Suppression
-        #detections = nms(detections, threshold)
+        detections = nms(detections, threshold)
 
         # Display the results after performing NMS
 

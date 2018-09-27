@@ -63,7 +63,7 @@ if __name__ == "__main__":
 	# Train
 	# print("Training a Linear SVM Classifier")
 	net.fit_generator(aug.flow(x=np.asarray(ims_list), y=labels, batch_size=bs), steps_per_epoch=len(ims) // bs, epochs=epochs)
-	# net.fit(x=np.asarray(ims_list), y=labels)
+	# net.fit(x=np.asarray(ims_list), y=labels,epochs=epochs)
 
 	# If feature directories don't exist, create them
 	if not os.path.isdir(model_path):
