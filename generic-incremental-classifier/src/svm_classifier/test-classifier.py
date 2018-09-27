@@ -75,7 +75,7 @@ if __name__ == "__main__":
                 # if pred == 1:
                     print("Detection:: Location -> ({}, {})".format(x, y))
                     print("Scale ->  {} | Confidence Score {} \n".format(scale, pred))
-                    detections.append((x, y,
+                    detections.append((x, y, 1,
                         int(min_wdw_sz[0]*(downscale**scale)),
                         int(min_wdw_sz[1]*(downscale**scale))))
                     cd.append(detections[-1])
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
         # Display the results before performing NMS
         clone = original_image.copy()
-        for (x_tl, y_tl, w, h) in detections:
+        for (x_tl, y_tl, _, w, h) in detections:
             # Draw the detections
             cv2.rectangle(im, (x_tl, y_tl), (x_tl+w, y_tl+h), (0, 0, 0), thickness=2)
         # cv2.imshow("Raw Detections before NMS", im)
@@ -108,7 +108,7 @@ if __name__ == "__main__":
 
         # Display the results after performing NMS
 
-        for (x_tl, y_tl, w, h) in detections:
+        for (x_tl, y_tl, _, w, h) in detections:
             # Draw the detections
             #clone = cv2.resize(clone, (512, 512))
             cv2.rectangle(clone, (x_tl, y_tl), (x_tl+w,y_tl+h), (0, 0, 0), thickness=2)
