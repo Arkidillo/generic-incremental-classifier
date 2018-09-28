@@ -12,6 +12,7 @@ from config import *
 import random
 from keras.optimizers import Adam
 from model import *
+from keras.utils.vis_utils import plot_model
 
 if __name__ == "__main__":
 
@@ -32,9 +33,15 @@ if __name__ == "__main__":
 	# Load the negative features
 	for neg_im in glob.glob(os.path.join(neg_im_path,"*")):
 		im = cv2.imread(neg_im)
+		x = random.randint(0, im.shape[1]-scale_size[0])
+		y = random.randint(0, im.shape[0]-scale_size[1])
+		im = im[y:y+scale_size[1], x:x+scale_size[0]]
+		cv2.imshow("Fuck you opencv", im)
 		im = cv2.resize(im, scale_size)
 		im = img_to_array(im)
 		ims_labels.append([im, 0])
+
+	cv2.imshow("Fuck you opencv", im)
 
 	ims_labels = np.array(ims_labels)
 	np.random.shuffle(ims_labels)
@@ -61,7 +68,7 @@ if __name__ == "__main__":
 		net = load_model("model.net")
 	except:
 		net = Net.build(width=scale_size[0], height=scale_size[1], depth=3, classes=2)
-	
+
 	opt = Adam(lr=init_lr, decay=init_lr / epochs)
 	net.compile(loss="binary_crossentropy", optimizer=opt)
 
@@ -75,7 +82,7 @@ if __name__ == "__main__":
 	    os.makedirs(model_path)
 
 
-	# im = cv2.imread("mac.jpeg")
+	# im = cv2.imread("/test_images/1250_20180903_105522.jpg")
 	# im = cv2.resize(im, scale_size)
 	# im = img_to_array(im)
 	# im = np.expand_dims(im, axis=0)
@@ -92,3 +99,22 @@ if __name__ == "__main__":
 
 	# Save model
 	net.save("model.net")
+	# history = net.fit(x, y, validation_split=0.25, epochs=50, batch_size=16, verbose=1)
+	#
+	# # Plot training & validation accuracy values
+	# plt.plot(history.history['acc'])
+	# plt.plot(history.history['val_acc'])
+	# plt.title('Model accuracy')
+	# plt.ylabel('Accuracy')
+	# plt.xlabel('Epoch')
+	# plt.legend(['Train', 'Test'], loc='upper left')
+	# plt.show()
+	#
+	# # Plot training & validation loss values
+	# plt.plot(history.history['loss'])
+	# plt.plot(history.history['val_loss'])
+	# plt.title('Model loss')
+	# plt.ylabel('Loss')
+	# plt.xlabel('Epoch')
+	# plt.legend(['Train', 'Test'], loc='upper left')
+	# plt.show()
