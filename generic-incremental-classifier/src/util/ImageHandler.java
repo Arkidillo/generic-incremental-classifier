@@ -11,7 +11,8 @@ import java.io.IOException;
 
 public class ImageHandler {
 
-    public static final String TESTING_EXTRA_PATH = "generic-incremental-classifier/";
+    //public static final String TESTING_EXTRA_PATH = "generic-incremental-classifier/";
+    public static final String TESTING_EXTRA_PATH = "";
 
     // folder that our images will be stored in
     public static final String IMAGE_FOLDER = "./" + TESTING_EXTRA_PATH + "initial_train_images/";
@@ -128,7 +129,7 @@ public class ImageHandler {
 
         // ensure the folder exists
         if (listOfFiles == null || listOfFiles.length == 0) {
-            System.err.println("ERROR: Folder is empty or cannot be found");
+            System.err.println("ERROR: Folder is empty or cannot be found. Path: " + folder.getAbsolutePath());
             return null;
         }
 
@@ -150,7 +151,7 @@ public class ImageHandler {
 
         // ensure the folder exists
         if (listOfFiles == null) {
-            System.err.println("ERROR: Folder is empty or cannot be found");
+            System.err.println("ERROR: Folder is empty or cannot be found. Path: " + folder.getAbsolutePath());
         }
 
         // read the next image and increment the index, unless we have reached the list image
