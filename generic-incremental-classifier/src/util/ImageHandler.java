@@ -11,12 +11,14 @@ import java.io.IOException;
 
 public class ImageHandler {
 
-    // folder that our images will be stored in
-    public static final File IMAGE_FOLDER = new File("./initial_train_images/");
-    public static final File CURR_TEST_BATCH_FOLDER = new File("./test_images");
+    public static final String TESTING_EXTRA_PATH = "generic-incremental-classifier/";
 
-    private static final String POSITIVE_IMAGES_FOLDER = "./positive_images/";
-    private static final String NEGATIVE_IMAGES_FOLDER = "./negative_images/";
+    // folder that our images will be stored in
+    public static final String IMAGE_FOLDER = "./" + TESTING_EXTRA_PATH + "initial_train_images/";
+    public static final File CURR_TEST_BATCH_FOLDER = new File("./" + TESTING_EXTRA_PATH + "test_images");
+
+    public static final String POSITIVE_IMAGES_FOLDER = "./" + TESTING_EXTRA_PATH + "positive_images/";
+    public static final String NEGATIVE_IMAGES_FOLDER = "./" + TESTING_EXTRA_PATH + "negative_images/";
 
     // macro determining whether the image is a positive or negative example
     public static final byte NEGATIVE_IMAGE = 0;
@@ -35,7 +37,7 @@ public class ImageHandler {
     public static BufferedImage loadImage(String fileName){
         BufferedImage image = null;
         try {
-            image = ImageIO.read(new File("./images/" + fileName));
+            image = ImageIO.read(new File(IMAGE_FOLDER + fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }

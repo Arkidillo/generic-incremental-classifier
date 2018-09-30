@@ -4,6 +4,8 @@ import gui.buttons.ButtonIDs;
 import util.ImageHandler;
 import util.Utils;
 
+import java.io.File;
+
 public class TrainingHandler {
     private GUIHandler guiHandler;
 
@@ -12,13 +14,14 @@ public class TrainingHandler {
     }
 
     public void train() {
-        guiHandler.loadNextImage(ImageHandler.IMAGE_FOLDER);
+        File imageFolder = new File(ImageHandler.IMAGE_FOLDER);
+        guiHandler.loadNextImage(imageFolder);
         while(true /* How many time do we want this to train? */) {
             boolean next = labelThisImage();
             if (next) {
-                guiHandler.loadNextImage(ImageHandler.IMAGE_FOLDER);
+                guiHandler.loadNextImage(imageFolder);
             } else {
-                guiHandler.loadPrevImage(ImageHandler.IMAGE_FOLDER);
+                guiHandler.loadPrevImage(imageFolder);
             }
         }
     }

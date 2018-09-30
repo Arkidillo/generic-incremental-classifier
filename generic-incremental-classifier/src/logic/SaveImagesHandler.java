@@ -1,9 +1,6 @@
 package logic;
 
-import com.google.gson.Gson;
 import gui.Label;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
 import util.ImageHandler;
 import util.Utils;
 
@@ -14,9 +11,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import static util.ImageHandler.NEGATIVE_IMAGES_FOLDER;
+import static util.ImageHandler.POSITIVE_IMAGES_FOLDER;
+
 public class SaveImagesHandler {
-    private static final String POSITIVE_IMAGES_FOLDER = "./positive_images/";
-    private static final String NEGATIVE_IMAGES_FOLDER = "./negative_images/";
 
     public static void saveAllImages(HashMap<String, ArrayList<Label>> allLabels) {
         // Make sure the folder is cleared
@@ -45,9 +43,7 @@ public class SaveImagesHandler {
                 // Add an extra '_i' for whatever label number it is
                 // Need to remove the file ext first, add the _i, then add back the ext.
                 String ext = Utils.getExtension(fileName);
-                String truncatedFilename = fileName.substring(0, fileName.length() - (ext.length() + 1));
-                String labeledFilename = truncatedFilename + '_' + j + "." + ext;
-                ImageHandler.saveImage(ImageHandler.cropImageToLabel(originalImage, labels.get(j)), labeledFilename, ImageHandler.POSITIVE_IMAGE);
+                PositiveImageFormatHandler.saveLabels(originalImage, ext, fileName, labels);
             }
         }
     }

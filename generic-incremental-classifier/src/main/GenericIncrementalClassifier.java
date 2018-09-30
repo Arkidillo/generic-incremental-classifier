@@ -10,7 +10,6 @@ public class GenericIncrementalClassifier {
     public static int WINDOW_WIDTH = 1280;
     public static int WINDOW_HEIGHT = 720;
 
-
     public static void main (String[] args) {
         // Start window
         GUIHandler gui = new GUIHandler(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));

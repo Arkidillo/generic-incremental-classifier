@@ -41,4 +41,13 @@ public class Utils {
         // Start from the . to the end of the filename
         return filename.substring(i + 1, filename.length());
     }
+
+    public static void saveStrToFile(String str, String filename) {
+        try (PrintWriter out = new PrintWriter(filename)) {
+            out.println(str);
+        } catch (IOException e) {
+            System.out.println("ERROR: failed to write str " + str + " to file " + filename + ", " + e.toString());
+            e.printStackTrace();
+        }
+    }
 }
