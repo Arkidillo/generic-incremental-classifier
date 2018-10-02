@@ -34,18 +34,11 @@ public class SaveImagesHandler {
             if (labels.size() == 0) {
                 ImageHandler.saveImage(ImageHandler.loadImage(fileName), fileName, ImageHandler.NEGATIVE_IMAGE);
             }
-
-            // Crop all the labels out of the image
-            for (int j = 0; j < labels.size(); j++) {
-                // Load the original buffered image, for cropping
-                BufferedImage originalImage = ImageHandler.loadImage(fileName);
-                // Save the cropped image back
-                // Add an extra '_i' for whatever label number it is
-                // Need to remove the file ext first, add the _i, then add back the ext.
-                String ext = Utils.getExtension(fileName);
-                PositiveImageFormatHandler.saveLabels(originalImage, ext, fileName, labels);
-            }
+            PositiveImageFormatHandler.saveLabels(fileName, labels);
         }
+
+        // Actually save the fully formatted csv when done
+        PositiveImageFormatHandler.outputFullCsv();
     }
 
     public static void clearFolders() {
