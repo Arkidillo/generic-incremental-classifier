@@ -33,9 +33,10 @@ public class PositiveImageFormatHandler {
     }
 
     public static String generateCsv(String pathname, Label label) {
+        byte imageClass = label.isPlacedByModel() ? ImageHandler.MODEL_CORRECT_LABEL : ImageHandler.NO_MODEL_LABEL;
         List<String> rowStrs = Arrays.asList(pathname, Integer.toString(label.getX()), Integer.toString(label.getY()),
                 Integer.toString(label.getX() + label.getWidth()), Integer.toString(label.getY() + label.getHeight()),
-                Integer.toString(ImageHandler.POSITIVE_IMAGE));
+                Integer.toString(imageClass));
         return addRowFormatting(rowStrs);
     }
 
