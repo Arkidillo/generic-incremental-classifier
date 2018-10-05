@@ -11,7 +11,7 @@ public class Label {
     private int height;
 
     // If the model was correct about this label
-    private boolean placedByModel = false;
+    private boolean modelWasWrong;
 
     public void setLeft(int x) {
         topLeft.x = x;
@@ -35,8 +35,8 @@ public class Label {
             height = y - topLeft.y;
         }
     }
-    public void setPlacedByModel(boolean placedByModel) {
-        this.placedByModel = placedByModel;
+    public void setModelWasWrong(boolean modelWasWrong) {
+        this.modelWasWrong = modelWasWrong;
     }
 
     public int getX() {
@@ -51,8 +51,8 @@ public class Label {
     public int getHeight() {
         return height;
     }
-    public boolean isPlacedByModel() {
-        return placedByModel;
+    public boolean isModelWrong() {
+        return modelWasWrong;
     }
 
     // is this Point inside this Label?
@@ -65,5 +65,4 @@ public class Label {
                 y > topLeft.getY() &&
                 y < topLeft.getY() + height;
     }
-
 }

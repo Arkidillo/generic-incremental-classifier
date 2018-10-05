@@ -43,7 +43,7 @@ public class LabelsReader {
                 newLabel.setBottom(y + height);
                 newLabel.setRight(x + width);
 
-                newLabel.setPlacedByModel(true);
+                newLabel.setModelWasWrong(false);
 
                 if (!filename.equals(oldFilename)){
                     labels.put(oldFilename, thisImageLabels);

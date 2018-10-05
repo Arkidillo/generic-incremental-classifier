@@ -43,7 +43,7 @@ public class SaveImagesHandler {
                 // Need to remove the file ext first, add the _i, then add back the ext.
                 String ext = Utils.getExtension(fileName);
                 String truncatedFilename = fileName.substring(0, fileName.length() - (ext.length() + 1));
-                byte correctedClass = labels.get(j).isPlacedByModel() ? MODEL_CORRECT_LABEL : NOT_MODEL_LABEL;
+                byte correctedClass = labels.get(j).isModelWrong() ? MODEL_WRONG : MODEL_NOT_WRONG;
                 String labeledFilename = truncatedFilename + '_' + j + "_" + correctedClass + "." + ext;
                 ImageHandler.saveImage(ImageHandler.cropImageToLabel(originalImage, labels.get(j)), labeledFilename, correctedClass);
             }

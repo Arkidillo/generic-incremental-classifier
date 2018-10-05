@@ -23,8 +23,8 @@ public class ImageHandler {
 
     // macro determining whether the image is a positive or negative example
     public static final byte NEGATIVE_IMAGE = 0;
-    public static final byte NOT_MODEL_LABEL = 1;
-    public static final byte MODEL_CORRECT_LABEL = 2;
+    public static final byte MODEL_NOT_WRONG = 1;
+    public static final byte MODEL_WRONG = 2;
 
     // keeps track of the index of the image we are on
     // (index into the folder.listFiles() array)
@@ -84,7 +84,7 @@ public class ImageHandler {
     // save the given image to an image file (as whatever image type it started as)
     public static void saveImage(BufferedImage image, String imageName, byte positiveOrNegative) {
         String filePath;
-        if (positiveOrNegative == MODEL_CORRECT_LABEL || positiveOrNegative == NOT_MODEL_LABEL) {
+        if (positiveOrNegative == MODEL_NOT_WRONG || positiveOrNegative == MODEL_WRONG) {
             filePath = POSITIVE_IMAGES_FOLDER;
         } else {
             filePath = NEGATIVE_IMAGES_FOLDER;

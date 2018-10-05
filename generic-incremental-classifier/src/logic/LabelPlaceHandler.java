@@ -86,6 +86,8 @@ public class LabelPlaceHandler implements MouseListener {
                 break;
             case BOTTOM:
                 newLabel.setBottom(adjY);
+                // If user is creating a new label in correction mode, the model must have missed this
+                newLabel.setModelWasWrong(GenericIncrementalClassifier.CORRECTION_MODE);
                 textBox.setText("DONE. Click left to start new");
 
                 // add the new label to the pane to display

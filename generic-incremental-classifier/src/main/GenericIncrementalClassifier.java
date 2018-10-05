@@ -7,8 +7,9 @@ import logic.UserCorrectionHandler;
 import java.awt.*;
 
 public class GenericIncrementalClassifier {
-    public static int WINDOW_WIDTH = 1280;
-    public static int WINDOW_HEIGHT = 720;
+    public static final int WINDOW_WIDTH = 1280;
+    public static final int WINDOW_HEIGHT = 720;
+    public static boolean CORRECTION_MODE;
 
     public static void main (String[] args) {
         // Start window
@@ -16,6 +17,7 @@ public class GenericIncrementalClassifier {
 
         // If there were no arguments, this is the first time we are running, so do the first training
         if (args.length == 0) {
+            CORRECTION_MODE = false;
             // User training
             TrainingHandler trainer = new TrainingHandler(gui);
             trainer.train();
@@ -24,7 +26,7 @@ public class GenericIncrementalClassifier {
             // ML training (Done in python)
         }
 
-
+        CORRECTION_MODE = true;
         // User correction
         UserCorrectionHandler userCorrection = new UserCorrectionHandler(gui);
         userCorrection.correct();
