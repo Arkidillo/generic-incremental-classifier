@@ -17,8 +17,14 @@ from keras.utils.vis_utils import plot_model
 if __name__ == "__main__":
 
 	ims_labels = []
+	super_ims_labels =  []
+	super_ims = []
+	super_labels = []
 	ims = []
 	labels = []
+
+	super_train = False
+
 
 	# instead of hog features - use pixel intensities
 	# Load the positive features
@@ -28,7 +34,11 @@ if __name__ == "__main__":
 		im = cv2.imread(pos_im)
 		im = cv2.resize(im, scale_size)
 		im = img_to_array(im)
-		ims_labels.append([im, 1])
+		if pos_im.split('.')[0][-1] == 2:
+			super_train = True
+			super_ims_labels.append(im,1)
+		else:
+			ims_labels.append([im, 1])
 
 	# Load the negative features
 	for neg_im in glob.glob(os.path.join(neg_im_path,"*")):
@@ -36,17 +46,33 @@ if __name__ == "__main__":
 		x = random.randint(0, im.shape[1]-scale_size[0])
 		y = random.randint(0, im.shape[0]-scale_size[1])
 		im = im[y:y+scale_size[1], x:x+scale_size[0]]
-		cv2.imshow("Fuck you opencv", im)
+		# cv2.imshow("Fuck you opencv", im)
 		im = cv2.resize(im, scale_size)
 		im = img_to_array(im)
 		ims_labels.append([im, 0])
 
-	cv2.imshow("Fuck you opencv", im)
+	# cv2.imshow("Fuck you opencv", im)
+	if super_train == True:
+		super_ims_labels = np.array(super_ims_labels)
+		np.random.shuffle(super_ims_labels)
+
+		super_ims_labels = np.array(super_ims_labels)
+		np.random.shuffle(super_ims_labels)
+
+		super_ims = super_ims_labels[:, 0]
+		super_labels = super_ims_labels[:, 1]
+
+		super_ims = super_ims / 255.0
+
+		super_labels = to_categorical(labels,num_classes=2)
+		super_ims_list = super_ims.toList();
+		super_labels_list = super_labels.toList();
 
 	ims_labels = np.array(ims_labels)
 	np.random.shuffle(ims_labels)
 
 	# Un-tuple the images from their labels
+
 	ims = ims_labels[:, 0]
 	labels = ims_labels[:, 1]
 
@@ -74,28 +100,15 @@ if __name__ == "__main__":
 
 	# Train
 	# print("Training a Linear SVM Classifier")
+	if super_train == True:
+		net.fit_generator(aug.flow(x=np.asarray(super_ims_list), y=super_labels, batch_size=bs), steps_per_epoch=len(ims) // bs, epochs=epochs, class_weight={1:2})
+
 	net.fit_generator(aug.flow(x=np.asarray(ims_list), y=labels, batch_size=bs), steps_per_epoch=len(ims) // bs, epochs=epochs)
 	# net.fit(x=np.asarray(ims_list), y=labels,epochs=epochs)
 
 	# If feature directories don't exist, create them
 	if not os.path.isdir(model_path):
 	    os.makedirs(model_path)
-
-
-	# im = cv2.imread("/test_images/1250_20180903_105522.jpg")
-	# im = cv2.resize(im, scale_size)
-	# im = img_to_array(im)
-	# im = np.expand_dims(im, axis=0)
-	#
-	# print(net.predict(np.asarray(im.tolist())))
-	#
-	#
-	# im = cv2.imread("eagle.jpg")
-	# im = cv2.resize(im, scale_size)
-	# im = img_to_array(im)
-	# im = np.expand_dims(im, axis=0)
-	#
-	# print(net.predict(np.asarray(im.tolist())))
 
 	# Save model
 	net.save("model.net")

@@ -42,7 +42,7 @@ if __name__ == "__main__":
         original_image = im.copy()
 
         # Load the classifier
-        print(model_file)
+        # print(model_file)
         net = load_model("model.net")
 
         # List to store the detections
@@ -73,8 +73,8 @@ if __name__ == "__main__":
                 pred = net.predict_proba(im_arr)[0,1]
                 if pred == 1.0:
                 # if pred == 1:
-                    print("Detection:: Location -> ({}, {})".format(x, y))
-                    print("Scale ->  {} | Confidence Score {} \n".format(scale, pred))
+                    # print("Detection:: Location -> ({}, {})".format(x, y))
+                    # print("Scale ->  {} | Confidence Score {} \n".format(scale, pred))
                     detections.append((x, y, 1,
                         int(min_wdw_sz[0]*(downscale**scale)),
                         int(min_wdw_sz[1]*(downscale**scale))))
@@ -118,9 +118,9 @@ if __name__ == "__main__":
             else:
             	rects.append((x_tl, y_tl, w, h, im_path[18:]))
 
-        cv2.imshow("Final Detections after applying NMS", clone)
-        if show_final_det:
-            cv2.waitKey()
+        # cv2.imshow("Final Detections after applying NMS", clone)
+        # if show_final_det:
+            # cv2.waitKey()
 
     df = pd.DataFrame(rects)
     df.to_csv(labels_csv, header=False, index=False)
