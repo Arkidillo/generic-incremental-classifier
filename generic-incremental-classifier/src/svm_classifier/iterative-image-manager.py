@@ -27,7 +27,10 @@ if __name__ == "__main__":
 	else:
 		# Give 1 batch images to python tester (test_images)
 		# ^ Loop this for `iterations`
-		shutil.rmtree(config.test_im_dir)
+		for file in os.listdir(config.test_im_dir):
+			fp = os.path.join(config.test_im_dir,file)
+			os.unlink(fp)
+
 		target_dir = config.test_im_dir[:-1]
 
 	for i in range(i_start, i_end):
