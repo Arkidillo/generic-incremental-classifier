@@ -1,6 +1,7 @@
 package logic;
 
 import gui.Label;
+import main.GenericIncrementalClassifier;
 import util.ImageHandler;
 import util.Utils;
 
@@ -31,13 +32,14 @@ public class SaveImagesHandler {
 
             // The image is a negative example if it has no labels
             if (labels.size() == 0) {
-                ImageHandler.saveImage(ImageHandler.loadImage(fileName), fileName, ImageHandler.NEGATIVE_IMAGE);
+                ImageHandler.saveImage(ImageHandler.loadImage(fileName, GenericIncrementalClassifier.CORRECTION_MODE ? NEGATIVE_IMAGES_FOLDER : IMAGE_FOLDER),
+                                                              fileName, ImageHandler.NEGATIVE_IMAGE);
             }
 
             // Crop all the labels out of the image
             for (int j = 0; j < labels.size(); j++) {
                 // Load the original buffered image, for cropping
-                BufferedImage originalImage = ImageHandler.loadImage(fileName);
+                BufferedImage originalImage = ImageHandler.loadImage(fileName, GenericIncrementalClassifier.CORRECTION_MODE ? POSITIVE_IMAGES_FOLDER : IMAGE_FOLDER);
                 // Save the cropped image back
                 // Add an extra '_i' for whatever label number it is
                 // Need to remove the file ext first, add the _i, then add back the ext.

@@ -36,10 +36,10 @@ public class ImageHandler {
     }
 
     // take filename of image in 'images' folder and return ImageIcon object
-    public static BufferedImage loadImage(String fileName){
+    public static BufferedImage loadImage(String fileName, String imageFolder){
         BufferedImage image = null;
         try {
-            image = ImageIO.read(new File(IMAGE_FOLDER + fileName));
+            image = ImageIO.read(new File(imageFolder + fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
