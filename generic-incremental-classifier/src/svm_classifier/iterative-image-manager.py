@@ -27,6 +27,7 @@ if __name__ == "__main__":
 	else:
 		# Give 1 batch images to python tester (test_images)
 		# ^ Loop this for `iterations`
+		shutil.rmtree(config.test_im_dir)
 		target_dir = config.test_im_dir[:-1]
 
 	for i in range(i_start, i_end):
