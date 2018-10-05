@@ -11,8 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static util.ImageHandler.NEGATIVE_IMAGES_FOLDER;
-import static util.ImageHandler.POSITIVE_IMAGES_FOLDER;
+import static util.ImageHandler.*;
 
 public class SaveImagesHandler {
 
@@ -43,7 +42,10 @@ public class SaveImagesHandler {
                 // Add an extra '_i' for whatever label number it is
                 // Need to remove the file ext first, add the _i, then add back the ext.
                 String ext = Utils.getExtension(fileName);
-                PositiveImageFormatHandler.saveLabels(originalImage, ext, fileName, labels);
+                String truncatedFilename = fileName.substring(0, fileName.length() - (ext.length() + 1));
+                byte correctedClass = labels.get(j).isPlacedByModel() ? MODEL_CORRECT_LABEL : NOT_MODEL_LABEL;
+                String labeledFilename = truncatedFilename + '_' + j + "_" + correctedClass + "." + ext;
+                ImageHandler.saveImage(ImageHandler.cropImageToLabel(originalImage, labels.get(j)), labeledFilename, correctedClass);
             }
         }
     }
