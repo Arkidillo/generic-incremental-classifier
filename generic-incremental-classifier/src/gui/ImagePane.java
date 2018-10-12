@@ -24,6 +24,10 @@ public class ImagePane extends JLayeredPane {
         return labels;
     }
 
+    public void setLabels(HashMap<String, ArrayList<Label>> labels) {
+        this.labels = labels;
+    }
+
     public void setImage(BufferedImage image, String fileName) {
         this.image = image;
         this.currentFileName = fileName;

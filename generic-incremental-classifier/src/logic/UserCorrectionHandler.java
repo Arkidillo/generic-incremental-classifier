@@ -21,30 +21,15 @@ public class UserCorrectionHandler {
         HashMap<String, ArrayList<Label>> labelsForFile = LabelsReader.readLabels();
 
         guiHandler.loadNextImage(ImageHandler.CURR_TEST_BATCH_FOLDER);
-
-        // Place the current image's
-        String imageFileName = ImageHandler.getCurrentFileName();
-        placeLabelsForImage(labelsForFile, imageFileName);
+        guiHandler.getImagePane().setLabels(labelsForFile);
 
         while(true /* How many time do we want this to train? */) {
             boolean next = labelThisImage();
             if (next) {
                 guiHandler.loadNextImage(ImageHandler.CURR_TEST_BATCH_FOLDER);
-                imageFileName = ImageHandler.getCurrentFileName();
-                placeLabelsForImage(labelsForFile, imageFileName);
             } else {
                 guiHandler.loadPrevImage(ImageHandler.CURR_TEST_BATCH_FOLDER);
-                imageFileName = ImageHandler.getCurrentFileName();
-                placeLabelsForImage(labelsForFile, imageFileName);
             }
-        }
-    }
-
-    public void placeLabelsForImage(HashMap<String, ArrayList<Label>> labelsForFile, String fileName) {
-        ArrayList<Label> labels = labelsForFile.get(fileName);
-
-        for (Label label: labels) {
-            guiHandler.addLabel(label);
         }
     }
 
