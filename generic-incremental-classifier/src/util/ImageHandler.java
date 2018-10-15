@@ -16,7 +16,7 @@ public class ImageHandler {
 
     // folder that our images will be stored in
     public static final String IMAGE_FOLDER = "./" + TESTING_EXTRA_PATH + "initial_train_images/";
-    public static final File CURR_TEST_BATCH_FOLDER = new File("./" + TESTING_EXTRA_PATH + "test_images");
+    public static final String CURR_TEST_BATCH_FOLDER = "./" + TESTING_EXTRA_PATH + "test_images";
 
     public static final String POSITIVE_IMAGES_FOLDER = "./" + TESTING_EXTRA_PATH + "positive_images/";
     public static final String NEGATIVE_IMAGES_FOLDER = "./" + TESTING_EXTRA_PATH + "negative_images/";
